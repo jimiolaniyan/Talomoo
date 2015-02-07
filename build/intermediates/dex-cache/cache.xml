@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/jimiolaniyan/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jar="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/libs/android-support-v4.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-4e361c8c4d321249119c12499b2f7618c8f11f0c.jar" />
+        sha1="3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28">
+        <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/android-support-v4-e212c016cd6d05b59a3713f82947bc7102b535e2.jar" />
     </item>
     <item
         jar="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/libs/easyfacebookandroidsdk_2.3.jar"
@@ -16,20 +16,6 @@
         <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/easyfacebookandroidsdk_2.3-bad4f7b2f5d118f07cb5694a4a296535a57e8c54.jar" />
     </item>
     <item
-        jar="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/libs/android-support-v4.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28">
-        <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/android-support-v4-e212c016cd6d05b59a3713f82947bc7102b535e2.jar" />
-    </item>
-    <item
-        jar="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-33c7a315db0430c2dfb02579fab1a6a03fd583f1.jar" />
-    </item>
-    <item
         jar="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/libs/Parse-1.3.5.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -37,11 +23,18 @@
         <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/Parse-1.3.5-f535ad307fcd5689e133441c68423bfc1b3c95d3.jar" />
     </item>
     <item
-        jar="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jar="/home/jimiolaniyan/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/classes-d3529f1df2d48adf63700b2e58df4d8b41d5a7b7.jar" />
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-459e2e8e51cb4a982038df11a3d362b935b52d4b.jar" />
+    </item>
+    <item
+        jar="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/3.21.1/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0285ad8da812e92dda76ed5d0dcba05724c7911d">
+        <dex dex="/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/classes-e9a0de6f49ea6d278c5ffae316fb476cbc25a06b.jar" />
     </item>
 
 </items>
