@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:key="preferred_language_title"
+        android:title="language" >
+        <ListPreference
+            android:defaultValue="Eng"
+            android:entries="@array/language_select"
+            android:entryValues="@array/language_select_entry"
+            android:key="language_preference"
+            android:summary="To Yoruba"
+            android:title="Change Language" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="log_in"
+        android:title="Account" >
+        <Preference
+            android:key="login"
+            android:title="Log Out" >
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

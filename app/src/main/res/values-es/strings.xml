@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Sẹ Àtúntò</string>
+    <string name="about">Ní pa</string>
+    <string name="welcome">Dán Ìmọ Yoòbá Rẹ Wò</string>
+    <string name="play_offline">Ta láì lo Ayélujárá</string>
+    <string name="play_online">Ta l’orí i Ayélujárá</string>
+    <string name="leader_board">Àwọn olùborí</string>
+    <string name="posting">Nfi sí Facebook</string>
+    <string name="correct">O gbà á</string>
+    <string name="wrong">O ṣì í</string>
+    <string name="successful">Ìbéèrè rẹ ti wà ní Facebook</string>
+    <string name="explanation">Àlàyé</string>
+    <string name="question_no">Ìbéèrè</string>
+</resources>

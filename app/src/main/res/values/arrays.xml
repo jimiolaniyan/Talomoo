@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="language_select">
+        <item>Yoruba</item>
+        <item>English</item>
+    </string-array>
+    
+    <string-array name="language_select_entry">
+        <item >Yor</item>
+        <item >Eng</item>
+        
+    </string-array>
+    
+</resources>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yoruba.talomoo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="18" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+
+    <application
+        android:name="com.yoruba.talomoo.ParseApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.yoruba.talomoo.MainActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="locale|layoutDirection"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.yoruba.talomoo.FirstRun"
+            android:noHistory="true"
+            android:configChanges="locale|layoutDirection">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.yoruba.talomoo.SignUpAndLogin"
+            android:configChanges="locale|layoutDirection"
+            android:label="@string/title_activity_sign_up_and_login"
+            android:parentActivityName="com.yoruba.talomoo.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yoruba.talomoo.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.yoruba.talomoo.QuestionSelection"
+            android:configChanges="locale|layoutDirection"
+            android:parentActivityName="com.yoruba.talomoo.CategoryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yoruba.talomoo.CategoryActivity" />
+        </activity>
+        <activity
+            android:name="com.yoruba.talomoo.CategoryActivity"
+            android:configChanges="locale|layoutDirection"
+            android:label="@string/title_activity_list"
+            android:parentActivityName="com.yoruba.talomoo.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yoruba.talomoo.MainActivity" />
+        </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:configChanges="locale|layoutDirection"
+            android:label="@string/title_activity_facebook_login" >
+        </activity>
+        <activity
+            android:name="com.yoruba.talomoo.SettingsActivity"
+            android:configChanges="locale"
+            android:label="@string/action_settings" >
+        </activity>
+
+        <provider
+            android:name="com.yoruba.talomoo.AppContentProvider"
+            android:authorities="com.yoruba.talomoo.AppContentProvider"
+            android:exported="false"
+            android:multiprocess="true" />
+
+        <activity
+            android:name="com.yoruba.talomoo.QuestionsActivity"
+            android:configChanges="locale|layoutDirection"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_questions"
+            android:parentActivityName="com.yoruba.talomoo.QuestionSelection" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yoruba.talomoo.QuestionSelection" />
+        </activity>
+        <activity
+            android:name="com.yoruba.talomoo.Login"
+            android:configChanges="locale|layoutDirection"
+            android:label="@string/title_activity_login" >
+        </activity>
+    </application>
+
+</manifest>
