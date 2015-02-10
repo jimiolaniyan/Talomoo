@@ -1,9 +1,5 @@
 package com.yoruba.talomoo;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,11 +13,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class CustomQuestionPagerAdapter extends PagerAdapter {
 
@@ -42,7 +43,7 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 	}        
 
 	public void swapCursor(Cursor cursor) {
-		this.cursor = cursor;
+        this.cursor = cursor;
 	}
 
 	public void swapAnotherCursor(Cursor cursor) {
@@ -50,8 +51,8 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 	}
 
 
-	public void destroyItem(View view, int position, Object object) {
-		((ViewPager) view).removeView((RelativeLayout) object);
+	public void destroyItem(ViewGroup view, int position, Object object) {
+		(view).removeView((RelativeLayout) object);
 	}
 
 	@Override
@@ -65,7 +66,6 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 
 	@Override
 	public int getItemPosition(Object object) {
-		// TODO Auto-generated method stub
 		return POSITION_NONE;
 	}
 
@@ -79,6 +79,7 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 		final ViewPager pager = (ViewPager) view.findViewById(R.id.pager_nav);
 		final RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.question_activity, null);
 		final RelativeLayout eplanationLayout = (RelativeLayout) layout.findViewById(R.id.explain);
+
 		final int id = cursor.getInt(cursor.getColumnIndex(DBHelper.KEY_ID));
 		final String s_id = Integer.toString(id);
 		final Button next = (Button) layout.findViewById(R.id.next_button);
@@ -213,7 +214,12 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 
 
 		final DBHelper mDbHelper = new DBHelper(context);
-		mDbHelper.openDatabase();
+        try {
+            mDbHelper.openDatabase();  //DB operation
+        } finally {
+            mDbHelper.close();
+        }
+
 		View.OnClickListener checkAnswer = new View.OnClickListener() {
 
 			@Override
@@ -378,9 +384,11 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 				int j = getItem(+1) + 1;
 				if (position != cursor.getCount()-1) {
 					Toast.makeText(context, context.getResources().getString(R.string.question_no) + " " + j, Toast.LENGTH_SHORT).show();
-				}else {
-					Toast.makeText(context, "This is the end of this category. Check for othe unanswered questions", Toast.LENGTH_LONG).show();
-				}
+
+                }else {
+					Toast.makeText(context, "This is the end of this category. Check for other unanswered questions", Toast.LENGTH_LONG).show();
+
+                }
 
 				pager.setCurrentItem(getItem(+1), true);
 			}
@@ -396,7 +404,6 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 
 	@Override
 	public boolean isViewFromObject(View view, Object object) {
-		// TODO Auto-generated method stub
 		return view == object;
 	}
 
