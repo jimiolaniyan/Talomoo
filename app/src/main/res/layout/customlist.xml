@@ -2,10 +2,10 @@
     android:id="@+id/listimage"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#ff33b5e4"
-    android:paddingLeft="5dp"
-    android:paddingRight="7dp"
-    android:paddingTop="7dp">
+    android:background="#ffffffff"
+    android:paddingLeft="10dp"
+    android:paddingRight="12dp"
+    android:paddingTop="12dp">
 
     <TextView
         android:id="@+id/list_questions_remaining"
@@ -15,7 +15,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="16dp"
         android:text="003"
-        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textColor="#0A0A09"
         android:layout_marginRight="2dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:background="@drawable/circle"/>
@@ -27,7 +28,9 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:adjustViewBounds="true"
-        android:maxWidth="50dp"
+        android:maxWidth="40dp"
+        android:maxHeight="40dp"
+        android:padding="2dp"
         android:src="@drawable/iconmonstr_books_icon" />
 
     <TextView
@@ -38,8 +41,8 @@
         android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/image"
         android:text="Large Text"
-        android:textAllCaps="true"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#fff" />
+        android:textColor="#0A0A09" />
 
 </RelativeLayout>

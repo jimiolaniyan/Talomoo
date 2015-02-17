@@ -1,8 +1,8 @@
 package com.yoruba.talomoo;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,15 +43,14 @@ public class Login extends FragmentActivity implements LoginListener{
 		}
 	}
 
-	@Override
+/*	@Override
 	protected void onResume() {
 		super.onResume();
 		isInternetPresent = cd.isConnectingToInternet();
 		if (isInternetPresent == true) {
 			this.mDialog = ProgressDialog.show(this, "", getResources().getString(R.string.posting));
 		}
-		
-	}
+	}*/
 	
 	private void connectToFaceBooK() {
 		String[] permissions = {
@@ -122,8 +121,11 @@ public class Login extends FragmentActivity implements LoginListener{
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-		this.mDialog.cancel();
-		finish();
+        Intent intent = new Intent(this, QuestionsActivity.class);
+        startActivity(intent);
+        finish();
+		//this.mDialog.cancel();
+
 	}
 
 	public void loginFail() {
@@ -131,7 +133,8 @@ public class Login extends FragmentActivity implements LoginListener{
 		finish();
 	}
 	
-	private class AlertDFragment extends DialogFragment {
+	@SuppressLint("ValidFragment")
+    private class AlertDFragment extends DialogFragment {
 		@Override
 		public Dialog onCreateDialog(Bundle savedInstanceState) {
 			return new AlertDialog.Builder(getActivity())

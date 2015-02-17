@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
@@ -20,7 +19,6 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 
 public class CategoryActivity extends FragmentActivity implements  android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>{
@@ -33,7 +31,7 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
 		// Show the Up button 
-		setupActionBar();
+		//setupActionBar();
 		ll = (RelativeLayout) findViewById(R.id.linlaHeaderProgress);
 		ll.setVisibility(View.VISIBLE);
 		fillList();

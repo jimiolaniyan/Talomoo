@@ -5,15 +5,18 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 
 import com.parse.ParseUser;
 @SuppressWarnings("deprecation")
-public class SettingsActivity extends PreferenceActivity {
+public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferences);
+        //bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
+        //bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_temperature_key)));
 		userSettings();
 	}
 
@@ -41,5 +44,18 @@ public class SettingsActivity extends PreferenceActivity {
 			}
 			
 	}
+
+    private void bindPreferenceSummaryToValue(Preference preference){
+        preference.setOnPreferenceChangeListener(this);
+        onPreferenceChange(preference, PreferenceManager
+                .getDefaultSharedPreferences(preference.getContext())
+                .getString(preference.getKey(), ""));
+
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        return false;
+    }
 }
 	
