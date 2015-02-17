@@ -63,10 +63,8 @@
             android:name="com.yoruba.talomoo.CategoryActivity"
             android:configChanges="locale|layoutDirection"
             android:label="@string/title_activity_list"
-            android:parentActivityName="com.yoruba.talomoo.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.yoruba.talomoo.MainActivity" />
+            >
+
         </activity>
 
         <meta-data

@@ -9,6 +9,25 @@
     tools:context=".CategoryListActivity" >
 
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/talomo"
+        android:id="@+id/imageView"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="50dp"
+        android:id="@+id/textView"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageView"/>
+
 	 <RelativeLayout
         android:id="@+id/linlaHeaderProgress"
         android:layout_width="fill_parent"
@@ -27,12 +46,14 @@
     
     <ListView
         android:id="@+id/category_list"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:dividerHeight="10dp"
         android:scrollingCache="false"
+        android:layout_below="@+id/textView"
         android:divider="@android:color/transparent" >
 
     </ListView>
+
 
 </RelativeLayout>

@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper{
 	public static final String KEY_QUESTION_LEVEL = "question_level";
 	public static final String KEY_QUESTION_TEXT = "question_text";
 	private static String DB_PATH = "";
-	public static String DB_NAME = "appens.db";
+	public static String DB_NAME = "jaydata.db";
 	private SQLiteDatabase myDataBase; 
 	private final Context myContext;
 	public static final String KEY_QUESTIONS_TABLE = "questions_en";	

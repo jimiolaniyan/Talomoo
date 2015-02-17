@@ -4,6 +4,7 @@ package com.yoruba.talomoo;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 
 public class CategoryActivity extends FragmentActivity implements  android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>{
@@ -34,6 +36,8 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
 		//setupActionBar();
 		ll = (RelativeLayout) findViewById(R.id.linlaHeaderProgress);
 		ll.setVisibility(View.VISIBLE);
+        Typeface tpf = Typeface.createFromAsset(getAssets(), "Purisa.ttf");
+        ((TextView) findViewById(R.id.textView)).setTypeface(tpf);
 		fillList();
 		setTitle("Select A Category");
 		clickCallBacks();
@@ -81,9 +85,9 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
 		ListView list = (ListView) findViewById(R.id.category_list);
 
 		mSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.customlist, null, from, to, 0);
-		list.setAdapter(mSimpleCursorAdapter);	
+		list.setAdapter(mSimpleCursorAdapter);
 		mSimpleCursorAdapter.setViewBinder(new ViewBinder() {
-			
+
 			@Override
 			public boolean setViewValue(View view, Cursor cursor, int colunmIndex) {
 				switch (view.getId()) {

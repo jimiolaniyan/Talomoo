@@ -29,7 +29,7 @@ public class FirstRun extends Activity {
 		
 		if (firstrun) {
 			setContentView(R.layout.first_run);
-			Typeface tpf = Typeface.createFromAsset(getAssets(), "gilgont.ttf");
+			Typeface tpf = Typeface.createFromAsset(getAssets(), "Purisa.ttf");
 			((TextView) findViewById(android.R.id.text1)).setTypeface(tpf);
 			((TextView) findViewById(android.R.id.text2)).setTypeface(tpf);
 			yorubaButton = (Button) findViewById(R.id.yoruba);
