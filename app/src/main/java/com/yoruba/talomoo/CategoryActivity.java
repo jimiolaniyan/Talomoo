@@ -1,51 +1,124 @@
 package com.yoruba.talomoo;
 
 
-import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter.ViewBinder;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 
 public class CategoryActivity extends FragmentActivity implements  android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>{
-	public static final String EXTRA_MESSAGE = "com.yoruba.talomoo.MESSAGE";
+    final String REFRESH = "Refresh";
+    public static final String EXTRA_MESSAGE = "com.yoruba.talomoo.MESSAGE";
 	SimpleCursorAdapter mSimpleCursorAdapter;
 	RelativeLayout ll;
+    LinearLayout ln;
+    Locale locale;
+    int refresh;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
-		// Show the Up button 
+        // Show the Up button
 		//setupActionBar();
 		ll = (RelativeLayout) findViewById(R.id.linlaHeaderProgress);
 		ll.setVisibility(View.VISIBLE);
         Typeface tpf = Typeface.createFromAsset(getAssets(), "Purisa.ttf");
         ((TextView) findViewById(R.id.textView)).setTypeface(tpf);
 		fillList();
-		setTitle("Select A Category");
+        setPreferredLanguage();
+        handleSettingsButton();
 		clickCallBacks();
 		getSupportLoaderManager().initLoader(0, null, this);
 	}
 
+    private void setPreferredLanguage() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences preferences = getSharedPreferences(FirstRun.PREF_NAME, 0);
+        boolean refresh =  preferences.getBoolean(REFRESH, true);
+        String tempPref = sharedPreferences.getString(getString(R.string.language_preference),
+                getString(R.string.pref_language_eng));
+//        Toast.makeText(this, tempPref, Toast.LENGTH_SHORT).show();
+        if(tempPref.equals(getString(R.string.pref_language_yor))){
+            String lang ="es";
+            locale = new Locale(lang);
+//            Locale.setDefault(locale);
+            Resources res = getBaseContext().getResources();
+            DisplayMetrics disp = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = locale;
+            res.updateConfiguration(conf, disp);
 
-	private void clickCallBacks() {
+            if (refresh){
+                SharedPreferences.Editor edit = preferences.edit();
+                edit.putBoolean(REFRESH, false);
+                edit.apply();
+                finish();
+                startActivity(getIntent());
+            }
+
+        }else if (tempPref.equals(getString(R.string.pref_language_eng))) {
+            String lang ="en";
+            locale = new Locale(lang);
+//            Locale.setDefault(locale);
+            Resources res = getBaseContext().getResources();
+            DisplayMetrics disp = res.getDisplayMetrics();
+            Configuration conf = res.getConfiguration();
+            conf.locale = locale;
+            res.updateConfiguration(conf, disp);
+            if (!refresh){
+                SharedPreferences.Editor edit = preferences.edit();
+                edit.putBoolean(REFRESH, true);
+                edit.apply();
+                finish();
+                startActivity(getIntent());
+            }
+
+//            finish();
+//            startActivity(getIntent());
+//            Log.d(getClass().toString(), "What is your Language?");
+        }
+
+    }
+
+
+
+
+    private void handleSettingsButton() {
+        ln = (LinearLayout) findViewById(R.id.composite_item);
+        ln.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CategoryActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+
+    private void clickCallBacks() {
 		ListView clickList = (ListView) findViewById(R.id.category_list);
 		clickList.
 		setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,6 +149,14 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
 	protected void onResume() {
 		super.onResume();
 		getSupportLoaderManager().restartLoader(0, null, this);
+       /* if (SettingsActivity.prefIndex == 1){
+            changeConfig("es");
+        }*/
+        setPreferredLanguage();
+//        Intent intents = getIntent();
+//        finish();
+//        startActivity(intents);
+
 	}
 
 
@@ -105,30 +186,6 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
 				return false;
 			}
 		});
-	}
-
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	private void setupActionBar() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.list, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			onBackPressed();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

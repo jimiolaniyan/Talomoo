@@ -2,10 +2,8 @@
     android:id="@+id/listimage"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="#ffffffff"
-    android:paddingLeft="10dp"
-    android:paddingRight="12dp"
-    android:paddingTop="12dp">
+     android:background="@drawable/custom"
+  >
 
     <TextView
         android:id="@+id/list_questions_remaining"

@@ -13,6 +13,7 @@
         android:orientation="vertical" >
 
         <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/mylayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
@@ -66,7 +67,6 @@
                 <Button
                     android:id="@+id/exit_click"
                     style="@style/HomeButton"
-                    android:drawableTop="@drawable/about"
                     android:text="@string/about" />
             </LinearLayout>
         </LinearLayout>

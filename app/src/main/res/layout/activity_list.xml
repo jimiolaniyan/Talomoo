@@ -10,9 +10,10 @@
 
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/talomo"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/appicon"
         android:id="@+id/imageView"
         android:layout_marginBottom="10dp"
         android:layout_alignParentTop="true"
@@ -22,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textSize="50dp"
+        android:textSize="35dp"
         android:id="@+id/textView"
         android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content" >
         </ProgressBar>
     </RelativeLayout>
-    
+
     <ListView
         android:id="@+id/category_list"
         android:layout_width="wrap_content"
@@ -52,8 +53,42 @@
         android:scrollingCache="false"
         android:layout_below="@+id/textView"
         android:divider="@android:color/transparent" >
-
     </ListView>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/composite_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category_list"
+        android:background="@drawable/custom_home"
+        android:layout_marginTop="25dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:maxWidth="40dp"
+            android:maxHeight="40dp"
+            android:padding="2dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/levels" />
+
+        <TextView
+            android:id="@+id/list_question_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/image"
+            android:text="@string/action_settings"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#eeeeee" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>

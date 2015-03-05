@@ -38,7 +38,7 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
             rowId = ( extras != null ) ? extras.getLong(DBHelper.KEY_ID) :  null;
         }
         populategrid();
-        setupActionBar();
+//        setupActionBar();
         startQuestion();
         getSupportLoaderManager().initLoader(1, null, this);
     }

@@ -3,14 +3,15 @@
 
     <PreferenceCategory
         android:key="preferred_language_title"
-        android:title="language" >
+        android:title="@string/language_preference" >
         <ListPreference
-            android:defaultValue="Eng"
+            android:title="@string/language_preference_title"
+            android:key="@string/language_preference"
+            android:defaultValue="@string/pref_language_eng"
             android:entries="@array/language_select"
             android:entryValues="@array/language_select_entry"
-            android:key="language_preference"
-            android:summary="To Yoruba"
-            android:title="Change Language" />
+            />
+
     </PreferenceCategory>
     <PreferenceCategory
         android:key="log_in"

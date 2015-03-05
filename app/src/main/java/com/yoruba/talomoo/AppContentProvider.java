@@ -43,7 +43,6 @@ public class AppContentProvider extends ContentProvider {
 		try {
 			myDH.createDatabase();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		myDH.openDatabase();
@@ -79,13 +78,11 @@ public class AppContentProvider extends ContentProvider {
 
 	@Override
 	public int delete(Uri arg0, String arg1, String[] arg2)  throws UnsupportedOperationException{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public String getType(Uri uri) throws UnsupportedOperationException{
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -99,7 +96,6 @@ public class AppContentProvider extends ContentProvider {
 	@Override
 	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

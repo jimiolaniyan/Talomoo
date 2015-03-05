@@ -53,6 +53,15 @@
     <string name="next_question">Next</string>
     <string name="question_no">Question</string>
     <string name="explanation">Explanation</string>
-    <string name="explanation_text">"Dummy Explanation Tes dddd dddddd dddddddd ddddddddd Tes dddd dddddd dddddddd ddddddddd Tes dddd dddddd dddddddd ddddddddd Tes dddd dddddd dddddddd ddddddddd "</string>
+    <string name="explanation_text">"Dummy Explanation Tes dddd dddddd dddddddd ddddddddd Tes
+        dddd dddddd dddddddd ddddddddd Tes dddd dddddd dddddddd ddddddddd Tes dddd dddddd dddddddd
+        ddddddddd "</string>
+
+    <string name="pref_language_yor">Yor</string>
+    <string name="pref_language_eng">Eng</string>
+    <string name="language_preference">Language</string>
+    <string name="language_preference_title">Change Language</string>
+    <string name="to_yoruba">To Yoruba</string>
+    <string name="to_english">To English</string>
 
 </resources>
