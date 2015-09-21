@@ -13,6 +13,7 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginTop="15dp"
+        android:src="@drawable/appicon"
         android:id="@+id/imageView"
         android:layout_marginBottom="10dp"
         android:layout_alignParentTop="true"
@@ -22,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textSize="35dp"
+        android:textSize="35sp"
         android:id="@+id/textView"
         android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
@@ -60,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/category_list"
+        android:background="@drawable/custom_home"
         android:layout_marginTop="25dp"
         android:clickable="true">
 
@@ -73,7 +75,8 @@
             android:maxWidth="40dp"
             android:maxHeight="40dp"
             android:padding="2dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/levels" />
 
         <TextView
             android:id="@+id/list_question_type"

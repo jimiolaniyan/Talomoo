@@ -3,7 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <RelativeLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scores"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="95"
+            android:layout_gravity="start"
+           >
+
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/questions_left"
+            android:text=""
+            android:paddingLeft="7dp"
+            android:paddingBottom="2dp"
+            android:paddingRight="12dp"
+            android:paddingTop="2dp"
+            android:textColor="@color/card_white"
+            android:textSize="15sp"
+            android:background="@color/green"
+            android:layout_weight="5"
+            />
+
+        </LinearLayout>
+
+
+    <!--<RelativeLayout
         android:id="@+id/scores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,25 +44,26 @@
         android:layout_marginTop="5dp"
         android:background="#ff33b5e4" >
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Current Score:"
-            android:textColor="#fff"
-            android:textSize="22dp" />
+        &lt;!&ndash;<TextView&ndash;&gt;
+            &lt;!&ndash;android:id="@+id/textView1"&ndash;&gt;
+            &lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;
+            &lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;
+            &lt;!&ndash;&lt;!&ndash;android:padding="10dp"&ndash;&gt;&ndash;&gt;
+            &lt;!&ndash;android:text="Current Score:"&ndash;&gt;
+            &lt;!&ndash;android:textColor="#fff"&ndash;&gt;
+            &lt;!&ndash;android:textSize="22dp" />&ndash;&gt;
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/textView1"
             android:layout_alignParentRight="true"
             android:paddingRight="10dp"
             android:text="0"
             android:textColor="#fff"
             android:textSize="22dp" />
-    </RelativeLayout>
+        &lt;!&ndash;android:layout_alignBaseline="@+id/textView1"&ndash;&gt;
+
+    </RelativeLayout>-->
 
     <GridView
         android:id="@+id/question_grid"
