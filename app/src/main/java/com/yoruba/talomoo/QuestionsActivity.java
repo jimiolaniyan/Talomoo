@@ -18,7 +18,7 @@ public class QuestionsActivity extends FragmentActivity implements LoaderCallbac
 	private static final int QUESTION_TEXT = 1;
 	private static final int CATEGORY = 2;
 	Long rowInDB;
-	Long gridRow;
+//	Long gridRow;
 	ViewPager pager;
 	int selcectionPosition;
 	CustomQuestionPagerAdapter mAdapter;
@@ -45,7 +45,7 @@ public class QuestionsActivity extends FragmentActivity implements LoaderCallbac
 	}
 
 	//	@Override
-	//	protected void onResume() {
+	//	protected void onResume() {s
 	//		super.onResume();
 	//		getSupportLoaderManager().restartLoader(QUESTION_TEXT, null, this);
 	//		getSupportLoaderManager().restartLoader(CATEGORY, null, this);

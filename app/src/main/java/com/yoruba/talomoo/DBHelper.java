@@ -14,12 +14,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/**
- * @author robert.hinds
- *
- */
 
 public class DBHelper extends SQLiteOpenHelper{
+
 	public static final String TAG = "DBHelper";
 	public static final String KEY_NAME = "name";
 	public static final String KEY_COUNT = "questions_count";
@@ -31,18 +28,32 @@ public class DBHelper extends SQLiteOpenHelper{
 	public static final String KEY_QUESTION_LEVEL = "question_level";
 	public static final String KEY_QUESTION_TEXT = "question_text";
 	private static String DB_PATH = "";
-	public static String DB_NAME = "jaydata.db";
+	public static String DB_NAME = "tester.db";
 	private SQLiteDatabase myDataBase; 
 	private final Context myContext;
 	public static final String KEY_QUESTIONS_TABLE = "questions_en";	
 	public static final String KEY_TABLE = "categories_en";	
 	public static final String KEY_IMAGES= "listimage";
 	public static final String RIGHT_ANSWER = "r_answer";
+    public static final String WRONG_ANSWER = "wrong";
 	public static final String WRONG_ANSWER1= "w_answer1";
 	public static final String WRONG_ANSWER2= "w_answer2";
 	public static final String KEY_SCORE = "score";
+    private static int categories = 3;
+    private static DBHelper sInstance;
 
 
+
+    public static DBHelper getInstance(Context context) {
+
+        // Use the application context, which will ensure that you
+        // don't accidentally leak an Activity's context.
+        // See this article for more information: http://bit.ly/6LRzfx
+        if (sInstance == null) {
+            sInstance = new DBHelper(context.getApplicationContext());
+        }
+        return sInstance;
+    }
 
 	public DBHelper(Context context) {
 		super(context, DB_NAME, null, 1);
@@ -94,7 +105,7 @@ public class DBHelper extends SQLiteOpenHelper{
 	public boolean openDatabase() throws SQLException{
 			String mPath = DB_PATH + DB_NAME;
 			myDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
-		return myDataBase != null;
+		    return myDataBase != null;
 	}
 	@Override
 	public synchronized void close(){
@@ -114,11 +125,11 @@ public class DBHelper extends SQLiteOpenHelper{
 	public Cursor fetchCatgories(){
 		putValues();
 		return myDataBase.query(DBHelper.KEY_TABLE, new String[] {DBHelper.KEY_ID, DBHelper.KEY_NAME, DBHelper.KEY_COUNT, DBHelper.KEY_IMAGES}, null, null, null, null, null,null);
-		
+
 	}
 	
 	public void putValues(){
-		for (int i = 1; i < 18; i++  ) {
+		for (int i = 1; i < categories; i++  ) {
 			 Cursor contentCursor = myDataBase
 					.rawQuery("select count(_id) from questions_en where used = 0 and category" + " = " + i, null);
 
@@ -137,6 +148,11 @@ public class DBHelper extends SQLiteOpenHelper{
 		}
 		
 	}
+
+//    public Cursor getUsed(Long category){
+//        myDataBase.rawQuery("select count(_id) from questions_en where used = 0 and category" + " = " + category, null);
+//        return myDataBase.query(DB);
+//    }
 	
 	public void updateScoreInDB(int newScore, int category_id){
 		ContentValues mScore = new ContentValues();
@@ -157,7 +173,12 @@ public class DBHelper extends SQLiteOpenHelper{
 	public Cursor fetchCategoryName(long param){
 		return myDataBase.rawQuery("select _id, name, images, score from categories_en where _id = " + param, null);
 	}
-	
+
+    public Cursor fetchScore(long id){
+        return myDataBase.rawQuery("select score from categories_en where _id = " + id, null);
+    }
+
+
 	public void  updateUsed(long id) {
 		ContentValues data = new ContentValues();
 		data.put(DBHelper.KEY_USED, "1");

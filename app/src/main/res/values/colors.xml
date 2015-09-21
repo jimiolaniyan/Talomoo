@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="second_grey">#ffE3E8E7</color>
+    <color name="third_grey">#ffe0e8e6</color>
+    <color name="inverted_green">#90bbbbbb</color>
+    <color name="blue">#ff33b5e5</color>
+    <color name="card_shadow">#8c666666</color>
+    <color name="green">#40c889</color>
+    <color name="card_white">#ffffffff</color>
+    <color name="second_green">#39d78f</color>
+</resources>

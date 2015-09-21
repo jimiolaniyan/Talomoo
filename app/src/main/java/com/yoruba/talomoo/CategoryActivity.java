@@ -29,7 +29,7 @@ import java.util.Locale;
 
 public class CategoryActivity extends FragmentActivity implements  android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor>{
     final String REFRESH = "Refresh";
-    public static final String EXTRA_MESSAGE = "com.yoruba.talomoo.MESSAGE";
+//    public static final String EXTRA_MESSAGE = "com.yoruba.talomoo.MESSAGE";
 	SimpleCursorAdapter mSimpleCursorAdapter;
 	RelativeLayout ll;
     LinearLayout ln;
@@ -94,17 +94,9 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
                 finish();
                 startActivity(getIntent());
             }
-
-//            finish();
-//            startActivity(getIntent());
-//            Log.d(getClass().toString(), "What is your Language?");
         }
 
     }
-
-
-
-
     private void handleSettingsButton() {
         ln = (LinearLayout) findViewById(R.id.composite_item);
         ln.setOnClickListener(new View.OnClickListener() {
@@ -115,9 +107,6 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
             }
         });
     }
-
-
-
     private void clickCallBacks() {
 		ListView clickList = (ListView) findViewById(R.id.category_list);
 		clickList.
@@ -127,7 +116,7 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
 			public void onItemClick(AdapterView<?> l, View v, int position,
 					long id) {
 				
-				DBHelper mDbHelper = new DBHelper(CategoryActivity.this);
+				DBHelper mDbHelper = DBHelper.getInstance(CategoryActivity.this);
 				mDbHelper.openDatabase();
 				Cursor cursor = mDbHelper.fetchCategoryName(position+1);
 				if (cursor != null && cursor.moveToFirst()) {
@@ -149,16 +138,8 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
 	protected void onResume() {
 		super.onResume();
 		getSupportLoaderManager().restartLoader(0, null, this);
-       /* if (SettingsActivity.prefIndex == 1){
-            changeConfig("es");
-        }*/
         setPreferredLanguage();
-//        Intent intents = getIntent();
-//        finish();
-//        startActivity(intents);
-
 	}
-
 
 	private void fillList() {
 		String[] from = new String[] {DBHelper.KEY_IMAGES, DBHelper.KEY_NAME, DBHelper.KEY_COUNT, DBHelper.KEY_ID};

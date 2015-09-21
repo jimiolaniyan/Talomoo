@@ -20,23 +20,26 @@ import com.easy.facebook.android.facebook.Facebook;
 import com.easy.facebook.android.facebook.LoginListener;
 
 public class Login extends FragmentActivity implements LoginListener{
-	
+
 	private FBLoginManager fblogin;
 	public final String APP_ID = "152710554939550";
 	Boolean success = false;
 	Dialog mDialog;
 	ConnectionDetector cd;
 	Boolean isInternetPresent;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+        Bundle bundle = getIntent().getExtras();
+        final int id = bundle.getInt(DBHelper.KEY_ID);
+        Toast.makeText(this, " " + id, Toast.LENGTH_SHORT ).show();
 		connectToFaceBooK();
 		cd = new ConnectionDetector(getApplicationContext());
 		isInternetPresent = cd.isConnectingToInternet();
 		setTitle("FaceBook Post");
-		
-		if (isInternetPresent == false) {
+
+		if (!isInternetPresent) {
 			FragmentManager fm = getSupportFragmentManager();
 			AlertDFragment df = new AlertDFragment();
 			df.show(fm, "Dialog Fragment");
@@ -51,7 +54,7 @@ public class Login extends FragmentActivity implements LoginListener{
 			this.mDialog = ProgressDialog.show(this, "", getResources().getString(R.string.posting));
 		}
 	}*/
-	
+
 	private void connectToFaceBooK() {
 		String[] permissions = {
 				"publish_stream",
@@ -71,7 +74,7 @@ public class Login extends FragmentActivity implements LoginListener{
 		if (resultCode != RESULT_CANCELED) {
 			fblogin.loginSuccess(data);
 		}
-		
+
 	}
 
 	public void loginSuccess(final Facebook facebook) {
@@ -79,7 +82,7 @@ public class Login extends FragmentActivity implements LoginListener{
 		final String text = b.getString(DBHelper.KEY_QUESTION_TEXT);
 
 		Thread thread = new Thread(new Runnable() {
-			@Override 
+			@Override
 			public void run() {
 
 				GraphApi graphApi = new GraphApi(facebook);
@@ -93,7 +96,7 @@ public class Login extends FragmentActivity implements LoginListener{
 					Log.w("FaceBook", e.getMessage());
 				}
 
-				if (success == false) {
+				if (!success) {
 					finish();
 				}
 
@@ -118,14 +121,11 @@ public class Login extends FragmentActivity implements LoginListener{
 		fblogin.displayToast("Logout Success!");
 	}
 
+
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
-        Intent intent = new Intent(this, QuestionsActivity.class);
-        startActivity(intent);
         finish();
-		//this.mDialog.cancel();
-
 	}
 
 	public void loginFail() {

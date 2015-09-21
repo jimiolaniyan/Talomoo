@@ -56,6 +56,9 @@
     <string name="explanation_text">"Dummy Explanation Tes dddd dddddd dddddddd ddddddddd Tes
         dddd dddddd dddddddd ddddddddd Tes dddd dddddd dddddddd ddddddddd Tes dddd dddddd dddddddd
         ddddddddd "</string>
+    <string name="answer_option_A">A.</string>
+    <string name="answer_option_B">B.</string>
+    <string name="answer_option_D">D.</string>
 
     <string name="pref_language_yor">Yor</string>
     <string name="pref_language_eng">Eng</string>

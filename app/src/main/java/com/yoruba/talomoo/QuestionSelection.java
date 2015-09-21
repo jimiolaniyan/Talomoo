@@ -1,5 +1,4 @@
 package com.yoruba.talomoo;
-
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,15 +17,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-public class QuestionSelection extends FragmentActivity implements LoaderCallbacks<Cursor>  {
-
+public class QuestionSelection extends FragmentActivity implements LoaderCallbacks<Cursor> {
     Long rowId;
     SimpleCursorAdapter mAdapter;
     Bundle extras;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +29,25 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
         extras = getIntent().getExtras();
         String title = extras.getString(DBHelper.KEY_CATEGORY);
         setTitle(title);
+
         if (rowId == null) {
-            rowId = ( extras != null ) ? extras.getLong(DBHelper.KEY_ID) :  null;
+            rowId = ( extras != null ) ? extras.getLong(DBHelper.KEY_ID) : null;
         }
+
+        updateQuestionCount();
         populategrid();
-//        setupActionBar();
+//        setScore();
+// setupActionBar();
         startQuestion();
         getSupportLoaderManager().initLoader(1, null, this);
     }
 
+    private void updateQuestionCount() {
+        TextView textView = (TextView) findViewById(R.id.questions_left);
+        DBHelper mDbHelper = DBHelper.getInstance(QuestionSelection.this);
+        mDbHelper.openDatabase();
+        Cursor cursor = mDbHelper.fetchCatgories();
+    }
 
 
     public Long getRowId() {
@@ -56,23 +61,15 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
         mAdapter = new SimpleCursorAdapter(this, R.layout.grid_item, null, from, to, 0);
         grid.setAdapter(mAdapter);
         mAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
-
             @Override
             public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
-
                 switch (view.getId()) {
-
                     case R.id.grid_text:
                         TextView txt = (TextView)view;
                         int CursorPos = cursor.getPosition() + 1;
                         txt.setText(Integer.toString(CursorPos));
                         int getI = cursor.getInt(cursor.getColumnIndex("used"));
                         String color = Integer.toString(getI);
-                        if (color.equals("1") || color.equals("2")) {
-                            ((LinearLayout)view.getParent()).setBackgroundColor(0xffdddddd);
-                        }else if (color.equals("0")) {
-                            ((LinearLayout)view.getParent()).setBackgroundColor(0xef33b5e5);
-                        }
                         return true;
 
                     case R.id.grid_image_right:
@@ -84,7 +81,6 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
                             ((ImageView)view).setVisibility(View.VISIBLE);
                         }
                         return true;
-
                     case R.id.grid_image_left:
                         int view2 = cursor.getInt(cursor.getColumnIndex("question_level"));
                         String image2 = Integer.toString(view2);
@@ -94,29 +90,23 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
                             ((ImageView)view).setVisibility(View.VISIBLE);
                         }
                         return true;
-
                 }
                 return false;
             }
         });
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         getSupportLoaderManager().restartLoader(1, null, this);
     }
-
     private void startQuestion() {
-
         GridView myGrid = (GridView) findViewById(R.id.question_grid);
         myGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-
-                DBHelper mDbHelper = new DBHelper(QuestionSelection.this);
+                DBHelper mDbHelper = DBHelper.getInstance(QuestionSelection.this);
                 mDbHelper.openDatabase();
                 Cursor c = mDbHelper.fetchQuestionData(id);
                 if (c != null && c.moveToFirst()) {
@@ -126,23 +116,20 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
                     Intent i = new Intent(QuestionSelection.this, QuestionsActivity.class);
                     i.putExtra(DBHelper.KEY_ID, id);
                     i.putExtra(DBHelper.KEY_QUESTION_LEVEL, position);
-                    Log.d(DBHelper.TAG,  position + " onClick Position ");
+                    Log.d(DBHelper.TAG, position + " onClick Position ");
                     i.putExtra(DBHelper.KEY_HINT, t);
                     i.putExtra(DBHelper.KEY_COUNT, rowId);
                     startActivity(i);
                 }
             }
-
         });
     }
-
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void setupActionBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             getActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
-
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String pathSegment = Long.toString(getRowId());
@@ -153,21 +140,17 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
     @Override
     public void onLoadFinished(Loader<Cursor> arg0, Cursor cursor) {
         mAdapter.swapCursor(cursor);
-
     }
     @Override
     public void onLoaderReset(Loader<Cursor> arg0) {
         mAdapter.swapCursor(null);
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+// Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.questions, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -177,7 +160,4 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
-

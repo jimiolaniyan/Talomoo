@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:key="preferred_language_title"
+        android:title="@string/language_preference" >
+        <ListPreference
+            android:title="@string/language_preference_title"
+            android:key="@string/language_preference"
+            android:defaultValue="@string/pref_language_eng"
+            android:entries="@array/language_select"
+            android:entryValues="@array/language_select_entry"
+            />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="log_in"
+        android:title="Account" >
+        <Preference
+            android:key="login"
+            android:title="Log Out" >
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen><!-- From: file:/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/src/main/res/xml/preferences.xml -->

@@ -9,11 +9,11 @@ import android.net.Uri;
 import java.io.IOException;
 
 public class AppContentProvider extends ContentProvider {
-	QuestionSelection qSelect;
+//	QuestionSelection qSelect;
 	public static final String AUTHORITY = "com.yoruba.talomoo.AppContentProvider";
 	public static final Uri CONTENT_URI_CATEGORY = Uri.parse("content://" + AUTHORITY + "/categories");
 	public static final Uri CONTENT_URI_QUESTIONS = Uri.parse("content://" + AUTHORITY + "/questions");
-	public static final Uri CONTENT_URI_IBEERE = Uri.parse("content://" + AUTHORITY + "/ibeere");
+//	public static final Uri CONTENT_URI_IBEERE = Uri.parse("content://" + AUTHORITY + "/ibeere");
 	public static final Uri CONTENT_URI_CATEGORY_NAME = Uri.parse("content://" + AUTHORITY + "/title");
 	
 	private static final int QUESTIONS = 1;
@@ -22,9 +22,9 @@ public class AppContentProvider extends ContentProvider {
 	private static final int TITLE = 4;
 
 	
-	TestAdapter myTestAdapter;
+//	TestAdapter myTestAdapter;
 	DBHelper myDH;
-	CategoryActivity cat;
+//	CategoryActivity cat;
 	Long id;
 	private static final UriMatcher mUriMatcher;
 

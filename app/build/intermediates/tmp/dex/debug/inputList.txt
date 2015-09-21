@@ -1,0 +1,6 @@
+/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/classes/debug
+/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-459e2e8e51cb4a982038df11a3d362b935b52d4b.jar
+/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/easyfacebookandroidsdk_2.3-bad4f7b2f5d118f07cb5694a4a296535a57e8c54.jar
+/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/Parse-1.3.5-f535ad307fcd5689e133441c68423bfc1b3c95d3.jar
+/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/classes-e9a0de6f49ea6d278c5ffae316fb476cbc25a06b.jar
+/home/jimiolaniyan/AndroidStudioProjects/Talomoo/app/build/intermediates/pre-dexed/debug/android-support-v4-e212c016cd6d05b59a3713f82947bc7102b535e2.jar

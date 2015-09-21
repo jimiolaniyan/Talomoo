@@ -3,10 +3,8 @@ package com.yoruba.talomoo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetFileDescriptor;
 import android.database.Cursor;
 import android.graphics.Typeface;
-import android.media.MediaPlayer;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -20,7 +18,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -87,20 +84,20 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 		final ScrollView scroll = (ScrollView) layout.findViewById(R.id.page_content);
 
 		SharedPreferences setted = context.getSharedPreferences(PREFS, 0);
-
-		if (cursorCategory != null && cursorCategory.moveToFirst()){
-			final String s = cursorCategory.getString(cursorCategory.getColumnIndex("name"));
-			((TextView)layout.findViewById(R.id.text_category)).setText(s);
-			final int currentScore = setted.getInt(s, -1);
-			if (currentScore > -1) {
-				((TextView)layout.findViewById(R.id.user_category_score)).setText(Integer.toString(currentScore));
-			}
-		}
+//
+//		if (cursorCategory != null && cursorCategory.moveToFirst()){
+//			final String s = cursorCategory.getString(cursorCategory.getColumnIndex("name"));
+//			((TextView)layout.findViewById(R.id.text_category)).setText(s);
+//			final int currentScore = setted.getInt(s, -1);
+//			if (currentScore > -1) {
+//				((TextView)layout.findViewById(R.id.user_category_score)).setText(Integer.toString(currentScore));
+//			}
+//		}
 
 
 		// Typeface Related
 
-		Typeface tpf = Typeface.createFromAsset(context.getAssets(), "Roboto-Light.ttf");
+		Typeface tpf = Typeface.createFromAsset(context.getAssets(), "Purisa.ttf");
 		final String text = cursor.getString(cursor.getColumnIndex(DBHelper.KEY_QUESTION_TEXT));
 		final TextView question_text =  (TextView)layout.findViewById(R.id.text_question);
 		question_text.setText(text);
@@ -141,22 +138,23 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 		option3.setText((CharSequence) optionsArray.get(2));
 
 		// Appending tags to the options
+
 		if (optionsArray.get(0).equalsIgnoreCase(rightAnswer)) {
 			option1.setTag(DBHelper.RIGHT_ANSWER);
 		} else if (!rightAnswer.equalsIgnoreCase((String) optionsArray.get(0))) {
-			option1.setTag("wrong");
+			option1.setTag(DBHelper.WRONG_ANSWER);
 		}
 
 		if (rightAnswer.equalsIgnoreCase((String) optionsArray.get(1))) {
 			option2.setTag(DBHelper.RIGHT_ANSWER);
 		} else if (!rightAnswer.equalsIgnoreCase((String) optionsArray.get(1))) {
-			option2.setTag("wrong");
+			option2.setTag(DBHelper.WRONG_ANSWER);
 		}
 
 		if (rightAnswer.equalsIgnoreCase((String) optionsArray.get(2))) {
 			option3.setTag(DBHelper.RIGHT_ANSWER);
 		} else if (!rightAnswer.equalsIgnoreCase((String) optionsArray.get(2))){
-			option3.setTag("wrong");
+			option3.setTag(DBHelper.WRONG_ANSWER);
 		}
 
 		// Setting up sharedpreferences for buttons according status
@@ -213,98 +211,117 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 		// Handle Button clicks
 
 
-		final DBHelper mDbHelper = new DBHelper(context);
-        try {
+		final DBHelper mDbHelper = DBHelper.getInstance(context);
+//        try {
             mDbHelper.openDatabase();  //DB operation
-        } finally {
-            mDbHelper.close();
-        }
+//        } finally {
+//            mDbHelper.close();
+//        }
 
-		View.OnClickListener checkAnswer = new View.OnClickListener() {
+        View.OnClickListener checkAnswer = new View.OnClickListener() {
 
-			@Override
-			public void onClick(View viewClicked) {
-				option1.setClickable(false);
-				option2.setClickable(false);
-				option3.setClickable(false);
+            @Override
+            public void onClick(View viewClicked) {
+                option1.setClickable(false);
+                option2.setClickable(false);
+                option3.setClickable(false);
 
-				eplanationLayout.setVisibility(View.VISIBLE);
+                eplanationLayout.setVisibility(View.VISIBLE);
 
-				new Thread(new Runnable() {
-					@Override
-					public void run() {
-						mDbHelper.updateUsed(id);
-					}
-				}).start();
+//                    mDbHelper.openDatabase();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mDbHelper.updateUsed(id);
+                    }
+                }).start();//DB operation
 
-				scroll.post(new Runnable() {
-					@Override
-					public void run() {
-						scroll.fullScroll(View.FOCUS_DOWN);
-					}
-				});
+//                    mDbHelper.close();
 
-				SharedPreferences setted = context.getSharedPreferences(PREFS, 0);
-				SharedPreferences.Editor editor = setted.edit();
-				editor.putBoolean(s_id, true);
-				editor.commit();
 
-				Button localButton = (Button) viewClicked;
+                scroll.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scroll.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
 
-				if (localButton.getTag().equals("r_answer")) {
-					localButton.setBackgroundColor(0xff9dcf94);
-					choose_text.setText(R.string.correct);
-					choose_text.setTextColor(0xff2ad094);
-					if (cursorCategory != null && cursorCategory.moveToFirst()){
-						final String s = cursorCategory.getString(cursorCategory.getColumnIndex("name"));
-						final int currentScore = setted.getInt(s, 0);
-								switch (difficulty ) {
-								case 3:
-									editor.putInt(s , 400 + currentScore);
-									editor.commit();
-									break;
-								case 2:
-									editor.putInt(s , 500 + currentScore);
-									editor.commit();
-									break;
-								case 1:
-									editor.putInt(s , 600 + currentScore);
-									editor.commit();
-									break;
-								default:
-									break;
-								}
-					}
+                SharedPreferences setted = context.getSharedPreferences(PREFS, 0);
+                SharedPreferences.Editor editor = setted.edit();
+                editor.putBoolean(s_id, true);
+                editor.apply();
 
-					editor.putBoolean(s_id + " Right", true);
-					editor.commit();
-				}
-				else {
-					localButton.setBackgroundColor(0xffec6d42);
-					choose_text.setText(R.string.wrong);
-					choose_text.setTextColor(0xffec6d4b);
-					final String button1_text = localButton.getText().toString();
+                Button localButton = (Button) viewClicked;
 
-					editor.putBoolean(s_id + " Wrong", true);
-					editor.putString(s_id + " Button1Text", button1_text);
-					editor.commit();
+                if (localButton.getTag().equals("r_answer")) {
+                    localButton.setBackgroundColor(0xff9dcf94);
+                    choose_text.setText(R.string.correct);
+                    choose_text.setTextColor(0xff2ad094);
+                    if (cursorCategory != null && cursorCategory.moveToFirst()){
+//                        final String s = cursorCategory.getString(cursorCategory.getColumnIndex("name"));
+//                        final int currentScore = setted.getInt(s, 0);
+                        int currentScore;
+                                cursorCategory.getInt(cursorCategory.
+                                getColumnIndex(DBHelper.KEY_SCORE));
+                        final int idForScore = cursorCategory.getInt(cursorCategory.getColumnIndex(DBHelper.KEY_ID));
+                        switch (difficulty ) {
+                            case 3:
+                                currentScore = 100;
+                                Log.d(" 1 New Score", currentScore + " 1 current Score" + " " + idForScore);
+                                mDbHelper.updateScoreInDB(currentScore, idForScore);
+//                                editor.putInt(s , 400 + currentScore);
+//                                editor.apply();
+                                break;
+                            case 2:
+                                currentScore = 100;
+                                Log.d(" 1 New Score", currentScore + " 1 current Score" + " " + idForScore);
+                                mDbHelper.updateScoreInDB(currentScore, idForScore);
+//                                editor.putInt(s , 500 + currentScore);
+//                                editor.apply();
+                                break;
+                            case 1:
+                                currentScore = 100;
+                                Log.d(" 1 New Score", currentScore + " 1 current Score" + " " + idForScore);
+                                mDbHelper.updateScoreInDB(currentScore, idForScore);
+//                                editor.putInt(s , 600 + currentScore);
+//                                editor.apply();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
 
-					if (option1.getTag().toString().equalsIgnoreCase("r_answer")) {
-						option1.setBackgroundColor(0xff9dcf94);
-					}else if (option2.getTag().toString().equalsIgnoreCase("r_answer")) {
-						option2.setBackgroundColor(0xff9dcf94);
-					}else if(option3.getTag().toString().equalsIgnoreCase("r_answer")){
-						option3.setBackgroundColor(0xff9dcf94);
-					}
+                    editor.putBoolean(s_id + " Right", true);
+                    editor.apply();
+                }
+                else {
+                    localButton.setBackgroundColor(0xffec6d42);
+                    choose_text.setText(R.string.wrong);
+                    choose_text.setTextColor(0xffec6d4b);
+                    final String button1_text = localButton.getText().toString();
 
-				}
-			}
+                    editor.putBoolean(s_id + " Wrong", true);
+                    editor.putString(s_id + " Button1Text", button1_text);
+                    editor.commit();
 
-		};
+                    if (option1.getTag().toString().equalsIgnoreCase("r_answer")) {
+                        option1.setBackgroundColor(0xff9dcf94);
+                    }else if (option2.getTag().toString().equalsIgnoreCase("r_answer")) {
+                        option2.setBackgroundColor(0xff9dcf94);
+                    }else if(option3.getTag().toString().equalsIgnoreCase("r_answer")){
+                        option3.setBackgroundColor(0xff9dcf94);
+                    }
 
-		option1.setOnClickListener(checkAnswer);
-		option2.setOnClickListener(checkAnswer);
-		option3.setOnClickListener(checkAnswer);
+                }
+            }
+
+        };
+
+        option1.setOnClickListener(checkAnswer);
+        option2.setOnClickListener(checkAnswer);
+        option3.setOnClickListener(checkAnswer);
+
+
 
 		//		private void calculateScore() {
 		//			if (cursorCategory != null && cursorCategory.moveToFirst()) {
@@ -335,46 +352,54 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 		//		}
 		//	});
 
-		Button playButton = (Button) layout.findViewById(R.id.play_button);
-		playButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				if (cursor.moveToPosition(pager.getCurrentItem())) {
-					String audio = cursor.getString(cursor.getColumnIndex(DBHelper.KEY_HINT));
-					if (audio == null || audio.isEmpty()) {
-						Toast.makeText(context, "Nothing to Play " + audio, Toast.LENGTH_SHORT).show();
-					}else if (audio != null && !audio.isEmpty()) {
-						try {
-							AssetFileDescriptor afd = context.getAssets().openFd(audio);
-							MediaPlayer player = new MediaPlayer();
-							player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-							player.prepare();
-							player.start();
-						} catch (IOException e) {
-							Log.d(" Audio Error ", e.getMessage());
-							e.printStackTrace();
-						}
-						//						MediaPlayer mPlayer = MediaPlayer.create(context, context.getAssets().open(audio));
-						//						/*(context,getResources().getIdentifier(audio, "raw", context.getPackageName()));*/
-						//						mPlayer.start();
-					} 
-
-				}
-
-			}
-		});
+//		Button playButton = (Button) layout.findViewById(R.id.play_button);
+//		playButton.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View arg0) {
+//				if (cursor.moveToPosition(pager.getCurrentItem())) {
+//					String audio = cursor.getString(cursor.getColumnIndex(DBHelper.KEY_HINT));
+//					if (audio == null || audio.isEmpty()) {
+//						Toast.makeText(context, "Nothing to Play " + audio, Toast.LENGTH_SHORT).show();
+//					}else if (audio != null && !audio.isEmpty()) {
+//						try {
+//							AssetFileDescriptor afd = context.getAssets().openFd(audio);
+//							MediaPlayer player = new MediaPlayer();
+//							player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+//							player.prepare();
+//							player.start();
+//						} catch (IOException e) {
+//							Log.d(" Audio Error ", e.getMessage());
+//							e.printStackTrace();
+//						}
+//						//						MediaPlayer mPlayer = MediaPlayer.create(context, context.getAssets().open(audio));
+//						//						/*(context,getResources().getIdentifier(audio, "raw", context.getPackageName()));*/
+//						//						mPlayer.start();
+//					}
+//
+//				}
+//
+//			}
+//		});
 
 		Button postButton = (Button) layout.findViewById(R.id.post_online);
 		postButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
+
 				Intent intent = new Intent(context, Login.class);
 				intent.putExtra(DBHelper.KEY_QUESTION_TEXT, text);
+                int j = getItem(+1) + 1;
+                Toast.makeText(context, " id" + j , Toast.LENGTH_LONG).show();
+                intent.putExtra(DBHelper.KEY_ID, j);
 				context.startActivity(intent);
 
+
 			}
+            public int getItem(int i) {
+                return i += pager.getCurrentItem();
+            }
 		});
 
 		next.setOnClickListener(new View.OnClickListener() {
@@ -383,17 +408,19 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 			public void onClick(View arg0) {
 				int j = getItem(+1) + 1;
 				if (position != cursor.getCount()-1) {
-					Toast.makeText(context, context.getResources().getString(R.string.question_no) + " " + j, Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, context.getResources().getString
+                            (R.string.question_no) + " " + j + " id " + id, Toast.LENGTH_SHORT).show();
 
                 }else {
-					Toast.makeText(context, "This is the end of this category. Check for other unanswered questions", Toast.LENGTH_LONG).show();
+					Toast.makeText(context, "This is the end of this category." +
+                            " Check for other unanswered questions", Toast.LENGTH_LONG).show();
 
                 }
 
 				pager.setCurrentItem(getItem(+1), true);
 			}
 
-			private int getItem(int i) {
+			public int getItem(int i) {
 				return i += pager.getCurrentItem();
 			}
 		});
