@@ -63,7 +63,6 @@ public class CategoryActivity extends FragmentActivity implements  android.suppo
         if(tempPref.equals(getString(R.string.pref_language_yor))){
             String lang ="es";
             locale = new Locale(lang);
-//            Locale.setDefault(locale);
             Resources res = getBaseContext().getResources();
             DisplayMetrics disp = res.getDisplayMetrics();
             Configuration conf = res.getConfiguration();
