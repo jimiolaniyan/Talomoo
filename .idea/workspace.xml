@@ -18,24 +18,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.yoruba.talomoo" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a19f81f-b4a7-4130-bb9b-92663b05241d" name="Default" comment="update build.gradle">
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\generated\source\buildConfig\androidTest\debug\com\yoruba\talomoo\test\BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\generated\source\buildConfig\test\debug\com\yoruba\talomoo\test\BuildConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\dex\debug\classes.dex" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.21.1\classes.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\manifest\androidTest\debug\AndroidManifest.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\Parse-1.3.5-07485ced33cdba11fb1e9783296b0c82a237cc52.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\Parse-1.3.5-f535ad307fcd5689e133441c68423bfc1b3c95d3.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\android-support-v4-e212c016cd6d05b59a3713f82947bc7102b535e2.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\android-support-v4-ed8af95ff3bcd812b9ac814e15b16ec674a655c6.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-09a67949804d99ffeb931ef943235d17433e7fd0.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-459e2e8e51cb4a982038df11a3d362b935b52d4b.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-cc52b9f00786da91beb04f318b9e326d3bf99c9e.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-e9a0de6f49ea6d278c5ffae316fb476cbc25a06b.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\easyfacebookandroidsdk_2.3-bad4f7b2f5d118f07cb5694a4a296535a57e8c54.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\easyfacebookandroidsdk_2.3-e4d6b85cd31b920f1b6f2f2dd2527c39684f5764.jar" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\tmp\dex\debug\inputList.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/yoruba/talomoo/CategoryActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/yoruba/talomoo/CategoryActivity.java" />
+    <list default="true" id="5a19f81f-b4a7-4130-bb9b-92663b05241d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Talomoo.iws" />
@@ -1874,7 +1857,11 @@
       <created>1425554062075</created>
       <updated>1425554062075</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="update build.gradle">
+      <created>1450177095659</created>
+      <updated>1450177095659</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="2">
