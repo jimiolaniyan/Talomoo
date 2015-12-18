@@ -3,6 +3,8 @@
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true" >
 
+
+
     <ScrollView
         android:id="@+id/page_content"
         android:layout_width="match_parent"

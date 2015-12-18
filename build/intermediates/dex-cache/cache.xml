@@ -2,13 +2,6 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.21.1\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0285ad8da812e92dda76ed5d0dcba05724c7911d">
-        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-17d01709d6002b5a4f83fdecf15560c290cb04b3.jar" />
-    </item>
-    <item
         jar="C:\Users\ARIAROO\Jimi\Talomoo\app\libs\Parse-1.3.5.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -16,11 +9,11 @@
         <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\Parse-1.3.5-f28bf25241a275aeced89da7f24ffcc137276408.jar" />
     </item>
     <item
-        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\libs\android-support-v4.jar"
+        jar="C:\Users\ARIAROO\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.2\91c20388c9a45f62b5ed8fe0502bb76ff6251fc7\bolts-android-1.1.2.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28">
-        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\android-support-v4-2ab799fd997f0588070dcc9e84b0710d1299583d.jar" />
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-2a735dc184399077e9f136f940da78dad6dab5c1.jar" />
     </item>
     <item
         jar="C:\Users\ARIAROO\Jimi\Talomoo\app\libs\easyfacebookandroidsdk_2.3.jar"
@@ -30,11 +23,95 @@
         <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\easyfacebookandroidsdk_2.3-94eea50a9b25ea49ee147d70784f2841ddfd6c66.jar" />
     </item>
     <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.21.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0285ad8da812e92dda76ed5d0dcba05724c7911d">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-17d01709d6002b5a4f83fdecf15560c290cb04b3.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\android-support-v4-2ab799fd997f0588070dcc9e84b0710d1299583d.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\libs\easyfacebookandroidsdk_2.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e17c5c0c43deee07693af5703b7abb57f020c353">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\easyfacebookandroidsdk_2.3-94eea50a9b25ea49ee147d70784f2841ddfd6c66.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-b55be4014e2b76bc4c427da674b25dfcdaed7b6a.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\libs\Parse-1.3.5.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="b77712127b728297e9858005b6da5ba4099a1285">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\Parse-1.3.5-f28bf25241a275aeced89da7f24ffcc137276408.jar" />
+    </item>
+    <item
         jar="C:\Users\ARIAROO\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.2\91c20388c9a45f62b5ed8fe0502bb76ff6251fc7\bolts-android-1.1.2.jar"
         jumboMode="false"
-        revision="21.1.2"
+        revision="23.0.2"
         sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7">
         <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-2a735dc184399077e9f136f940da78dad6dab5c1.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-48c308535a8d97adaf21f55e0c6d99bfb67c8d7a.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.github.afollestad.material-dialogs\core\0.8.5.2\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="308f07ef2c74fa4a1f7a194ef61f7f194bb84596">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-30759dd7dc99febd3a4970b9f5c5960bff99970d.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-d8dcde0cdb17160882836258508c323a7b3e09cf.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\butterknife-7.0.1-c75f2b2468a5799709b0cf16608a200de8e5ec17.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.4\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2a24cba08e1d865a79e61335f5a1bd64d520106d">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-511db8ffc2781c20e1b3d8dc7e08b509774ea041.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3e4e879d0b3dc11f2feb3f55e77e3b5bd82c4a28">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\android-support-v4-2ab799fd997f0588070dcc9e84b0710d1299583d.jar" />
+    </item>
+    <item
+        jar="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.21.1\jars\classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0285ad8da812e92dda76ed5d0dcba05724c7911d">
+        <dex dex="C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\pre-dexed\debug\classes-17d01709d6002b5a4f83fdecf15560c290cb04b3.jar" />
     </item>
 
 </items>

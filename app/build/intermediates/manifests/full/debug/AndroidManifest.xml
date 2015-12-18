@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="22" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -19,6 +19,8 @@
         android:normalScreens="true"
         android:smallScreens="true" />
 
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name="com.yoruba.talomoo.ParseApplication"
         android:allowBackup="true"
@@ -29,8 +31,7 @@
             android:name="com.yoruba.talomoo.MainActivity"
             android:configChanges="locale|layoutDirection"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.yoruba.talomoo.FirstRun"
             android:configChanges="locale|layoutDirection"
@@ -61,9 +62,7 @@
         <activity
             android:name="com.yoruba.talomoo.CategoryActivity"
             android:configChanges="locale|layoutDirection"
-            android:label="@string/title_activity_list"
-            android:theme="@style/NoActionBar" >
-        </activity>
+            android:label="@string/title_activity_list" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -72,8 +71,7 @@
         <activity
             android:name="com.facebook.LoginActivity"
             android:configChanges="locale|layoutDirection"
-            android:label="@string/title_activity_facebook_login" >
-        </activity>
+            android:label="@string/title_activity_facebook_login" />
         <activity
             android:name="com.yoruba.talomoo.SettingsActivity"
             android:configChanges="locale"
@@ -103,8 +101,10 @@
         <activity
             android:name="com.yoruba.talomoo.Login"
             android:configChanges="locale|layoutDirection"
-            android:label="@string/title_activity_login" >
-        </activity>
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name="com.yoruba.talomoo.TestActivity"
+            android:label="@string/title_activity_test" />
     </application>
 
 </manifest>

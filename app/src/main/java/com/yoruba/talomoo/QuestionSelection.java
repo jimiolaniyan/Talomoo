@@ -10,6 +10,7 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +19,16 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-public class QuestionSelection extends FragmentActivity implements LoaderCallbacks<Cursor> {
+import android.support.v7.widget.Toolbar;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+
+public class QuestionSelection extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    @Bind(R.id.my_toolbar) Toolbar myToolbar;
+    String title;
     Long rowId;
     SimpleCursorAdapter mAdapter;
     Bundle extras;
@@ -27,8 +37,13 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.selection_grid);
         extras = getIntent().getExtras();
-        String title = extras.getString(DBHelper.KEY_CATEGORY);
-        setTitle(title);
+
+        ButterKnife.bind(this);
+
+        title = extras.getString(DBHelper.KEY_CATEGORY);
+        myToolbar.setTitle(title);
+        setSupportActionBar(myToolbar);
+
 
         if (rowId == null) {
             rowId = ( extras != null ) ? extras.getLong(DBHelper.KEY_ID) : null;
@@ -116,9 +131,9 @@ public class QuestionSelection extends FragmentActivity implements LoaderCallbac
                     Intent i = new Intent(QuestionSelection.this, QuestionsActivity.class);
                     i.putExtra(DBHelper.KEY_ID, id);
                     i.putExtra(DBHelper.KEY_QUESTION_LEVEL, position);
-                    Log.d(DBHelper.TAG, position + " onClick Position ");
                     i.putExtra(DBHelper.KEY_HINT, t);
                     i.putExtra(DBHelper.KEY_COUNT, rowId);
+                    i.putExtra(DBHelper.TAG, title);
                     startActivity(i);
                 }
             }

@@ -12,7 +12,7 @@
     <string name="successful">Your question is now on Facebook</string>
     <string name="action_share">Tell a friend!</string>
     <string name="welcome">Talómọ̀ọ́ o</string>
-<!--     <string name="welcome">Test Your Knowledge Of Yoruba</string> -->
+    <!--     <string name="welcome">Test Your Knowledge Of Yoruba</string> -->
     <string name="play_offline">Play Offline</string>
     <string name="play_online">Play Online</string>
     <string name="leader_board">Leader Board</string>
@@ -66,5 +66,9 @@
     <string name="language_preference_title">Change Language</string>
     <string name="to_yoruba">To Yoruba</string>
     <string name="to_english">To English</string>
+    <string name="ten_questions">10 questions</string>
+    <string name="twenty_questions">20 questions</string>
+    <string name="fifty_questions">50 questions</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>

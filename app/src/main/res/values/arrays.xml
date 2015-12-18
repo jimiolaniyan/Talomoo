@@ -9,5 +9,11 @@
         <item>@string/pref_language_eng</item>
         <item>@string/pref_language_yor</item>
     </string-array>
-    
+
+    <string-array name="number_of_questions">
+        <item>@string/ten_questions</item>
+        <item>@string/twenty_questions</item>
+        <item>@string/fifty_questions</item>
+    </string-array>
+
 </resources>

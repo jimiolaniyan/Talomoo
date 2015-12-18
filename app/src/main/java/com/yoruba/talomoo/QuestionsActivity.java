@@ -1,6 +1,7 @@
 package com.yoruba.talomoo;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -10,11 +11,19 @@ import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class QuestionsActivity extends FragmentActivity implements LoaderCallbacks<Cursor>{
+import com.avast.android.dialogs.fragment.SimpleDialogFragment;
+import com.avast.android.dialogs.iface.ISimpleDialogListener;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class QuestionsActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, ISimpleDialogListener{
 	private static final int QUESTION_TEXT = 1;
 	private static final int CATEGORY = 2;
 	Long rowInDB;
@@ -23,15 +32,23 @@ public class QuestionsActivity extends FragmentActivity implements LoaderCallbac
 	int selcectionPosition;
 	CustomQuestionPagerAdapter mAdapter;
 	Long category;
+    QuestionsActivity aContext = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setupActionBar();
 		setContentView(R.layout.activity_slider);
+        ButterKnife.bind(this);
 
 		Bundle ext = getIntent().getExtras();
 		rowInDB = ext.getLong(DBHelper.KEY_ID); //for DB Id;
+//        setSupportActionBar(aToolbar);
+//        String title = ext.getString(DBHelper.TAG);
+//        Log.d("title string ", title);
+//
+//        aToolbar.setTitle(title);
+//		aToolbar.setTitleTextColor(android.R.color.white);
+
 		selcectionPosition = ext.getInt(DBHelper.KEY_QUESTION_LEVEL); //for position
 		category = ext.getLong(DBHelper.KEY_HINT);
 
@@ -82,7 +99,12 @@ public class QuestionsActivity extends FragmentActivity implements LoaderCallbac
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
+    @Override
+    public void onBackPressed() {
+        SimpleDialogFragment.createBuilder(aContext, getSupportFragmentManager()).setMessage("Want to Quit game? ").setPositiveButtonText("Yes").setNegativeButtonText("No").show();
+    }
+
+    @Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle arg1) {
 		switch (id) {
 		case QUESTION_TEXT:
@@ -118,12 +140,27 @@ public class QuestionsActivity extends FragmentActivity implements LoaderCallbac
 		default:
 			break;
 		}
-
-
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> arg0) {
 		mAdapter.swapCursor(null);
 	}
+
+    @Override
+    public void onNegativeButtonClicked(int requestCode) {
+
+    }
+
+    @Override
+    public void onNeutralButtonClicked(int requestCode) {
+
+    }
+
+    @Override
+    public void onPositiveButtonClicked(int requestCode) {
+        Intent intent = new Intent(QuestionsActivity.this, CategoryActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 }

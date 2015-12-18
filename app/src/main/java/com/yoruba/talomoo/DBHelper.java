@@ -123,7 +123,7 @@ public class DBHelper extends SQLiteOpenHelper{
 
 	}
 	public Cursor fetchCatgories(){
-		putValues();
+//		putValues();
 		return myDataBase.query(DBHelper.KEY_TABLE, new String[] {DBHelper.KEY_ID, DBHelper.KEY_NAME, DBHelper.KEY_COUNT, DBHelper.KEY_IMAGES}, null, null, null, null, null,null);
 
 	}
