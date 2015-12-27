@@ -1,22 +1,22 @@
  <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/listimage"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-     android:background="@drawable/custom"
-  >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+     <!--android:background="@drawable/custom"-->
 
-    <TextView
-        android:id="@+id/list_questions_remaining"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="16dp"
-        android:text="003"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:layout_marginRight="2dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:background="@drawable/circle"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/list_questions_remaining"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_marginBottom="16dp"-->
+        <!--android:text="003"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="#fff"-->
+        <!--android:layout_marginRight="2dp"-->
+        <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
+        <!--android:background="@drawable/circle"/>-->
 
     <ImageView
         android:id="@+id/image"
@@ -24,22 +24,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="35dp"
         android:adjustViewBounds="true"
         android:maxWidth="40dp"
         android:maxHeight="40dp"
         android:padding="2dp"
-        android:src="@drawable/iconmonstr_books_icon" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/talomo" />
 
     <TextView
         android:id="@+id/list_question_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="5dp"
         android:layout_toRightOf="@+id/image"
+        android:gravity="right"
+        android:layout_centerHorizontal="true"
         android:text="Large Text"
         android:textStyle="bold"
+        android:layout_centerInParent="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#0A0A09" />
+        android:textColor="#0A0A09"
+        />
 
 </RelativeLayout>

@@ -47,7 +47,7 @@ public class FirstRun extends Activity {
 			});
 			SharedPreferences.Editor edit = mPrefs.edit();
 			edit.putBoolean("firstRunSettings", false);
-			edit.commit();
+			edit.apply();
 		}else {
 			Intent i = new Intent(FirstRun.this, CategoryActivity.class);
 			startActivity(i);
@@ -70,7 +70,7 @@ public class FirstRun extends Activity {
 //                getString(R.string.pref_language_eng));
         SharedPreferences.Editor edit = mLanguagePrefs.edit();
         edit.putString(getString(R.string.language_preference), getString(R.string.pref_language_yor));
-        edit.commit();
+        edit.apply();
 
 
 //		locale = new Locale(lang);

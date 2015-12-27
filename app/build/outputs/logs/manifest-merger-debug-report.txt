@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:2:1-110:12
+ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:2:1-107:12
 	package
 		ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:3:5-33
 		INJECTED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml
@@ -59,7 +59,7 @@ ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:22:5-8
 	android:name
 		ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:22:30-80
 application
-ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:24:5-108:19
+ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:24:5-105:19
 MERGED from [com.facebook.android:facebook-android-sdk:3.21.1] C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\3.21.1\AndroidManifest.xml:24:5-20
 MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:23.1.1] C:\Users\ARIAROO\Jimi\Talomoo\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\AndroidManifest.xml:22:5-20
@@ -187,9 +187,3 @@ ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:101:9-
 		ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:103:13-59
 	android:name
 		ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:102:13-34
-activity#com.yoruba.talomoo.TestActivity
-ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:105:9-107:68
-	android:label
-		ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:107:13-56
-	android:name
-		ADDED from C:\Users\ARIAROO\Jimi\Talomoo\app\src\main\AndroidManifest.xml:106:13-41

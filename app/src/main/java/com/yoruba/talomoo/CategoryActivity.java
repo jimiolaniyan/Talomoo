@@ -26,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.avast.android.dialogs.fragment.ListDialogFragment;
+import com.yoruba.talomoo.util.LanguageUtil;
 
 import java.util.Locale;
 
@@ -71,12 +72,13 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
 //        Toast.makeText(this, tempPref, Toast.LENGTH_SHORT).show();
         if (tempPref.equals(getString(R.string.pref_language_yor))) {
             String lang = "es";
-            locale = new Locale(lang);
-            Resources res = getBaseContext().getResources();
-            DisplayMetrics disp = res.getDisplayMetrics();
-            Configuration conf = res.getConfiguration();
-            conf.locale = locale;
-            res.updateConfiguration(conf, disp);
+            new LanguageUtil().setResource(lang, getBaseContext().getResources());
+//            locale = new Locale(lang);
+//            Resources res = getBaseContext().getResources();
+//            DisplayMetrics disp = res.getDisplayMetrics();
+//            Configuration conf = res.getConfiguration();
+//            conf.locale = locale;
+//            res.updateConfiguration(conf, disp);
 
             if (refresh) {
                 SharedPreferences.Editor edit = preferences.edit();
@@ -89,12 +91,13 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
         } else if (tempPref.equals(getString(R.string.pref_language_eng))) {
             String lang = "en";
             locale = new Locale(lang);
-//            Locale.setDefault(locale);
-            Resources res = getBaseContext().getResources();
-            DisplayMetrics disp = res.getDisplayMetrics();
-            Configuration conf = res.getConfiguration();
-            conf.locale = locale;
-            res.updateConfiguration(conf, disp);
+            new LanguageUtil().setResource(lang, getBaseContext().getResources());
+////            Locale.setDefault(locale);
+//            Resources res = getBaseContext().getResources();
+//            DisplayMetrics disp = res.getDisplayMetrics();
+//            Configuration conf = res.getConfiguration();
+//            conf.locale = locale;
+//            res.updateConfiguration(conf, disp);
             if (!refresh) {
                 SharedPreferences.Editor edit = preferences.edit();
                 edit.putBoolean(REFRESH, true);
@@ -144,8 +147,12 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
     }
 
     private void fillList() {
-        String[] from = new String[]{DBHelper.KEY_IMAGES, DBHelper.KEY_NAME, DBHelper.KEY_COUNT, DBHelper.KEY_ID};
-        int[] to = new int[]{R.id.image, R.id.list_question_type, R.id.list_questions_remaining};
+//        String[] from = new String[]{DBHelper.KEY_IMAGES, DBHelper.KEY_NAME, DBHelper.KEY_COUNT, DBHelper.KEY_ID};
+//        int[] to = new int[]{R.id.image, R.id.list_question_type, R.id.list_questions_remaining};
+
+        String[] from = new String[]{DBHelper.KEY_IMAGES, DBHelper.KEY_NAME, DBHelper.KEY_COUNT};
+        int[] to = new int[]{R.id.image, R.id.list_question_type};
+
         ListView list = (ListView) findViewById(R.id.category_list);
 
         mSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.customlist, null, from, to, 0);

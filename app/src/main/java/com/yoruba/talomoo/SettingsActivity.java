@@ -13,6 +13,7 @@ import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
+import com.yoruba.talomoo.util.LanguageUtil;
 
 import java.util.Locale;
 
@@ -98,12 +99,7 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
     }
 
     private void changeConfig(String lang) {
-        locale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics disp = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = locale;
-        res.updateConfiguration(conf, disp);
+        new LanguageUtil().setResource(lang, getBaseContext().getResources());
         Intent refresh = new Intent(this, SettingsActivity.class);
         startActivity(refresh);
 

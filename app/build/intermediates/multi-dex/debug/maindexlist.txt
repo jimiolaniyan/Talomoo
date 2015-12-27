@@ -183,6 +183,7 @@ android/support/v4/view/ViewCompatJB.class
 -keep public class * extends java.lang.annotation.Annotation {
 com/facebook/android/R.class
 android/support/v4/view/ViewCompat$AccessibilityLiveRegion.class
+com/yoruba/talomoo/util/LanguageUtil.class
 com/facebook/widget/FacebookDialog$OpenGraphActionDialogBuilder.class
 android/support/v4/media/session/MediaSessionCompat.class
 android/support/v4/view/PagerAdapter.class
@@ -305,7 +306,6 @@ com/avast/android/dialogs/R$id.class
 android/support/v4/media/session/PlaybackStateCompatApi22.class
 android/support/v4/media/session/MediaSessionCompat$MediaSessionImplBase.class
 com/parse/ParseCallback.class
--keep class com.yoruba.talomoo.TestActivity { <init>(); }
 com/avast/android/dialogs/fragment/SimpleDialogFragment.class
 android/support/v4/view/ViewCompatICS.class
 com/avast/android/dialogs/iface/INeutralButtonDialogListener.class
@@ -314,7 +314,6 @@ com/facebook/model/OpenGraphAction.class
 com/avast/android/dialogs/core/BaseDialogFragment.class
 com/facebook/android/Facebook.class
 android/support/v4/app/FragmentState.class
-com/yoruba/talomoo/TestActivity.class
 android/support/v4/widget/CursorAdapter.class
 android/support/v4/util/DebugUtils.class
 android/support/v4/widget/DrawerLayout$EdgeGravity.class

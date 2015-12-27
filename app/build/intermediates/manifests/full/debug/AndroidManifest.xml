@@ -102,9 +102,6 @@
             android:name="com.yoruba.talomoo.Login"
             android:configChanges="locale|layoutDirection"
             android:label="@string/title_activity_login" />
-        <activity
-            android:name="com.yoruba.talomoo.TestActivity"
-            android:label="@string/title_activity_test" />
     </application>
 
 </manifest>

@@ -56,10 +56,6 @@
     <init>();
 }
 
--keep class com.yoruba.talomoo.TestActivity {
-    <init>();
-}
-
 -keep public class * extends android.app.backup.BackupAgent {
     <init>();
 }
