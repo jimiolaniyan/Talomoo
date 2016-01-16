@@ -504,14 +504,14 @@ public final class R {
 		public static final int abc_screen_toolbar = 0x7f030015;
 		public static final int abc_search_dropdown_item_icons_2line = 0x7f030016;
 		public static final int abc_search_view = 0x7f030017;
-		public static final int sdl_datepicker = 0x7f03003a;
-		public static final int sdl_dialog = 0x7f03003b;
-		public static final int sdl_list_item = 0x7f03003c;
-		public static final int sdl_list_item_multichoice = 0x7f03003d;
-		public static final int sdl_list_item_singlechoice = 0x7f03003e;
-		public static final int sdl_progress = 0x7f03003f;
-		public static final int sdl_timepicker = 0x7f030040;
-		public static final int support_simple_spinner_dropdown_item = 0x7f030046;
+		public static final int sdl_datepicker = 0x7f030038;
+		public static final int sdl_dialog = 0x7f030039;
+		public static final int sdl_list_item = 0x7f03003a;
+		public static final int sdl_list_item_multichoice = 0x7f03003b;
+		public static final int sdl_list_item_singlechoice = 0x7f03003c;
+		public static final int sdl_progress = 0x7f03003d;
+		public static final int sdl_timepicker = 0x7f03003e;
+		public static final int support_simple_spinner_dropdown_item = 0x7f030044;
 	}
 	public static final class string {
 		public static final int abc_action_bar_home_description = 0x7f070000;
