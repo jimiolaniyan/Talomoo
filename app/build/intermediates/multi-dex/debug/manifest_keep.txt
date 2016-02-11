@@ -1,4 +1,4 @@
--keep class com.yoruba.talomoo.ParseApplication {
+-keep class null {
     <init>();
     void attachBaseContext(android.content.Context);
 }

@@ -117,7 +117,6 @@ android/support/annotation/MenuRes.class
 com/parse/ParseUser.class
 android/support/v4/view/ViewCompatKitKat.class
 android/support/v4/app/LoaderManager$LoaderCallbacks.class
-com/parse/Parse.class
 com/facebook/AuthorizationClient$OnCompletedListener.class
 android/support/v4/content/AsyncTaskLoader.class
 butterknife/internal/ListenerMethod.class
@@ -180,6 +179,7 @@ android/support/v4/app/FragmentManagerImpl$5.class
 android/support/v7/app/ActionBarDrawerToggle$DelegateProvider.class
 com/facebook/AuthorizationClient$BackgroundProcessingListener.class
 android/support/v4/view/ViewCompatJB.class
+-keep class null {
 -keep public class * extends java.lang.annotation.Annotation {
 com/facebook/android/R.class
 android/support/v4/view/ViewCompat$AccessibilityLiveRegion.class
@@ -232,8 +232,6 @@ com/facebook/InsightsLogger.class
 butterknife/OnItemSelected$Callback.class
 android/support/v7/app/ActionBar$TabListener.class
 com/avast/android/dialogs/fragment/ListDialogFragment$SimpleListDialogBuilder.class
-com/parse/ParseACL.class
-com/yoruba/talomoo/ParseApplication.class
 com/avast/android/dialogs/iface/ISimpleDialogListener.class
 com/yoruba/talomoo/CustomQuestionPagerAdapter.class
 butterknife/BindDimen.class
@@ -270,6 +268,7 @@ android/support/v4/app/FragmentActivity$NonConfigurationInstances.class
 android/support/v7/widget/LinearLayoutCompat$LayoutParams.class
 com/yoruba/talomoo/Login.class
 android/support/v4/widget/MaterialProgressDrawable$2.class
+com/yoruba/talomoo/R$array.class
 com/parse/ParseInstallation.class
 com/facebook/AuthorizationClient$Result$Code.class
 android/support/annotation/RequiresPermission$Write.class
@@ -365,7 +364,6 @@ com/yoruba/talomoo/CategoryActivity.class
 android/support/annotation/FractionRes.class
 android/support/v4/view/accessibility/AccessibilityNodeProviderCompat.class
 com/yoruba/talomoo/SettingsActivity.class
--keep class com.yoruba.talomoo.ParseApplication {
 com/avast/android/dialogs/iface/INegativeButtonDialogListener.class
 android/support/v4/view/ViewCompat$ScrollIndicators.class
 com/facebook/AuthorizationClient$Result.class

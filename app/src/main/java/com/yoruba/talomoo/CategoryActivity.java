@@ -3,8 +3,6 @@ package com.yoruba.talomoo;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -13,20 +11,20 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter.ViewBinder;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.avast.android.dialogs.fragment.ListDialogFragment;
+import com.avast.android.dialogs.iface.IListDialogListener;
 import com.yoruba.talomoo.util.LanguageUtil;
+import com.yoruba.talomoo.util.QuestionUtil;
 
 import java.util.Locale;
 
@@ -36,8 +34,9 @@ import butterknife.OnClick;
 import butterknife.OnItemClick;
 
 
-public class CategoryActivity extends FragmentActivity implements android.support.v4.app.LoaderManager.LoaderCallbacks<Cursor> {
+public class CategoryActivity extends FragmentActivity implements LoaderCallbacks<Cursor>, IListDialogListener {
     final String REFRESH = "Refresh";
+    private static final String QUESTION_COUNT = "question count";
     //    public static final String EXTRA_MESSAGE = "com.yoruba.talomoo.MESSAGE";
     SimpleCursorAdapter mSimpleCursorAdapter;
 
@@ -55,10 +54,13 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         ButterKnife.bind(this);
+
         ll.setVisibility(View.VISIBLE);
         tpf = Typeface.createFromAsset(getAssets(), "Purisa.ttf");
         headerText.setTypeface(tpf);
+
         fillList();
+
         setPreferredLanguage();
         getSupportLoaderManager().initLoader(0, null, this);
     }
@@ -67,18 +69,10 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences preferences = getSharedPreferences(FirstRun.PREF_NAME, 0);
         boolean refresh = preferences.getBoolean(REFRESH, true);
-        String tempPref = sharedPreferences.getString(getString(R.string.language_preference),
-                getString(R.string.pref_language_eng));
-//        Toast.makeText(this, tempPref, Toast.LENGTH_SHORT).show();
+        String tempPref = sharedPreferences.getString(getString(R.string.language_preference), getString(R.string.pref_language_eng));
         if (tempPref.equals(getString(R.string.pref_language_yor))) {
             String lang = "es";
             new LanguageUtil().setResource(lang, getBaseContext().getResources());
-//            locale = new Locale(lang);
-//            Resources res = getBaseContext().getResources();
-//            DisplayMetrics disp = res.getDisplayMetrics();
-//            Configuration conf = res.getConfiguration();
-//            conf.locale = locale;
-//            res.updateConfiguration(conf, disp);
 
             if (refresh) {
                 SharedPreferences.Editor edit = preferences.edit();
@@ -92,12 +86,7 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
             String lang = "en";
             locale = new Locale(lang);
             new LanguageUtil().setResource(lang, getBaseContext().getResources());
-////            Locale.setDefault(locale);
-//            Resources res = getBaseContext().getResources();
-//            DisplayMetrics disp = res.getDisplayMetrics();
-//            Configuration conf = res.getConfiguration();
-//            conf.locale = locale;
-//            res.updateConfiguration(conf, disp);
+
             if (!refresh) {
                 SharedPreferences.Editor edit = preferences.edit();
                 edit.putBoolean(REFRESH, true);
@@ -116,26 +105,12 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
     }
 
     @OnItemClick(R.id.category_list) void clickCallBacks(int position, long id) {
-//                        ListDialogFragment.createBuilder(aContext, getSupportFragmentManager())
-//                                .setTitle("Select Question")
-//                                .setItems(R.array.number_of_questions)
-//                                .setRequestCode(9)
-//                                .setChoiceMode(AbsListView.CHOICE_MODE_SINGLE)
-//                                .show();
-
-                        DBHelper mDbHelper = DBHelper.getInstance(CategoryActivity.this);
-                        mDbHelper.openDatabase();
-                        Cursor cursor = mDbHelper.fetchCategoryName(position + 1);
-                        if (cursor != null && cursor.moveToFirst()) {
-                            String category = cursor.getString(cursor.getColumnIndex("name"));
-                            cursor.close();
-                            mDbHelper.close();
-                            Intent i = new Intent(CategoryActivity.this, QuestionSelection.class);
-                            i.putExtra(DBHelper.KEY_ID, id);
-                            i.putExtra(DBHelper.KEY_CATEGORY, category);
-                            startActivity(i);
-//                        }
-                    }
+        ListDialogFragment.createBuilder(aContext, getSupportFragmentManager())
+                .setTitle("Select Question")
+                .setItems(R.array.number_of_questions)
+                .setRequestCode(9)
+                .setChoiceMode(AbsListView.CHOICE_MODE_SINGLE)
+                .show();
     }
 
 
@@ -197,4 +172,22 @@ public class CategoryActivity extends FragmentActivity implements android.suppor
 
     }
 
+    @Override
+    public void onListItemSelected(CharSequence value, int position, int requestCode) {
+        DBHelper mDbHelper = DBHelper.getInstance(CategoryActivity.this);
+        mDbHelper.openDatabase();
+
+        Cursor cursor = mDbHelper.fetchCategoryName(position + 1);
+        if (cursor != null && cursor.moveToFirst()) {
+            String category = cursor.getString(cursor.getColumnIndex("name"));
+            long id = cursor.getLong(cursor.getColumnIndex(DBHelper.KEY_ID));
+            cursor.close();
+            mDbHelper.close();
+            Intent i = new Intent(CategoryActivity.this, QuestionsActivity.class);
+            i.putExtra(DBHelper.KEY_ID, id);
+            i.putExtra(QUESTION_COUNT, new QuestionUtil().questionCount(position));
+            i.putExtra(DBHelper.KEY_CATEGORY, category);
+            startActivity(i);
+        }
+    }
 }

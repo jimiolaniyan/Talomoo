@@ -42,12 +42,6 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
 
 		Bundle ext = getIntent().getExtras();
 		rowInDB = ext.getLong(DBHelper.KEY_ID); //for DB Id;
-//        setSupportActionBar(aToolbar);
-//        String title = ext.getString(DBHelper.TAG);
-//        Log.d("title string ", title);
-//
-//        aToolbar.setTitle(title);
-//		aToolbar.setTitleTextColor(android.R.color.white);
 
 		selcectionPosition = ext.getInt(DBHelper.KEY_QUESTION_LEVEL); //for position
 		category = ext.getLong(DBHelper.KEY_HINT);
@@ -60,13 +54,6 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
 		getSupportLoaderManager().initLoader(QUESTION_TEXT, null, this);
 		getSupportLoaderManager().initLoader(CATEGORY, null, this);
 	}
-
-	//	@Override
-	//	protected void onResume() {s
-	//		super.onResume();
-	//		getSupportLoaderManager().restartLoader(QUESTION_TEXT, null, this);
-	//		getSupportLoaderManager().restartLoader(CATEGORY, null, this);
-	//	}
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void setupActionBar() {
