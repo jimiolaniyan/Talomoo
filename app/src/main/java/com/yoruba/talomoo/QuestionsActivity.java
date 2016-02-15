@@ -6,30 +6,27 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.avast.android.dialogs.fragment.SimpleDialogFragment;
 import com.avast.android.dialogs.iface.ISimpleDialogListener;
+import com.yoruba.talomoo.util.Constant;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class QuestionsActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, ISimpleDialogListener{
 	private static final int QUESTION_TEXT = 1;
 	private static final int CATEGORY = 2;
 	Long rowInDB;
-//	Long gridRow;
 	ViewPager pager;
-	int selcectionPosition;
+	int count;
 	CustomQuestionPagerAdapter mAdapter;
 	Long category;
     QuestionsActivity aContext = this;
@@ -41,12 +38,11 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
         ButterKnife.bind(this);
 
 		Bundle ext = getIntent().getExtras();
-		rowInDB = ext.getLong(DBHelper.KEY_ID); //for DB Id;
 
-		selcectionPosition = ext.getInt(DBHelper.KEY_QUESTION_LEVEL); //for position
-		category = ext.getLong(DBHelper.KEY_HINT);
+        category = ext.getLong(DBHelper.KEY_ID);
+		count = ext.getInt(Constant.QUESTION_COUNT);
 
-		mAdapter = new CustomQuestionPagerAdapter(this, null, null);
+        mAdapter = new CustomQuestionPagerAdapter(this, null, null);
 		pager = (ViewPager) findViewById(R.id.pager_nav);
 		pager.setAdapter(mAdapter);
 
@@ -98,7 +94,7 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
 			Uri uri = AppContentProvider.CONTENT_URI_QUESTIONS;
 			String pathSegment = Long.toString(category);
 			uri = Uri.withAppendedPath(uri, pathSegment);
-			return new CursorLoader(this, uri, null, null, null, null);
+			return new CursorLoader(this, uri, null, Integer.toString(count), null, null);
 
 		case CATEGORY:
 			Uri categoryUri = AppContentProvider.CONTENT_URI_CATEGORY_NAME;
@@ -118,13 +114,12 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
 		case QUESTION_TEXT:
 			mAdapter.swapCursor(cursor);
 			mAdapter.notifyDataSetChanged();
-			pager.setCurrentItem(selcectionPosition, true);
 			break;
 
 
 		case CATEGORY:
 			mAdapter.swapAnotherCursor(cursor);
-		default:
+            mAdapter.notifyDataSetChanged();
 			break;
 		}
 	}
@@ -146,7 +141,7 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
 
     @Override
     public void onPositiveButtonClicked(int requestCode) {
-        Intent intent = new Intent(QuestionsActivity.this, CategoryActivity.class);
+        Intent intent = new Intent(QuestionsActivity.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

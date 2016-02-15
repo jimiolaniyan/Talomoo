@@ -58,8 +58,9 @@ public class AppContentProvider extends ContentProvider {
 			return  myDH.fetchCatgories();
 		case GRID:
 			String clickedRow = uri.getPathSegments().get(1);
+
 			long row = Long.parseLong(clickedRow);
-			return myDH.fetchQuestionsByCategory(row);
+			return myDH.fetchQuestionsByCategory(row, Integer.parseInt(selection));
 
 		case IBEERE:
 			String clickedGrid = uri.getPathSegments().get(1);

@@ -161,8 +161,8 @@ public class DBHelper extends SQLiteOpenHelper{
 		
 	}
 	
-	public Cursor fetchQuestionsByCategory(long row) throws SQLException{
-		return myDataBase.rawQuery("select * from questions_en where category" + " = " + row, null);
+	public Cursor fetchQuestionsByCategory(long row, int count) throws SQLException{
+		return myDataBase.rawQuery("select * from questions_en where category" + " = " + row + " limit " + count, null);
 	}
 
 	

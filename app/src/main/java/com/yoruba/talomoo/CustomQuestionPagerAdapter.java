@@ -28,8 +28,6 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 	private LayoutInflater inflater;
 	private Context context;
 
-
-
 	private static final String PREFS = "Selected";
 
 	public CustomQuestionPagerAdapter(Context context, Cursor cursor1, Cursor cursor2) {
@@ -84,16 +82,11 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 		final ScrollView scroll = (ScrollView) layout.findViewById(R.id.page_content);
 
 		SharedPreferences setted = context.getSharedPreferences(PREFS, 0);
-//
-//		if (cursorCategory != null && cursorCategory.moveToFirst()){
-//			final String s = cursorCategory.getString(cursorCategory.getColumnIndex("name"));
-//			((TextView)layout.findViewById(R.id.text_category)).setText(s);
-//			final int currentScore = setted.getInt(s, -1);
-//			if (currentScore > -1) {
-//				((TextView)layout.findViewById(R.id.user_category_score)).setText(Integer.toString(currentScore));
-//			}
-//		}
 
+		if (cursorCategory != null && cursorCategory.moveToFirst()){
+			final String category = cursorCategory.getString(cursorCategory.getColumnIndex("name"));
+			((TextView)layout.findViewById(R.id.text_category)).setText(category);
+		}
 
 		// Typeface Related
 
@@ -320,37 +313,6 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
         option1.setOnClickListener(checkAnswer);
         option2.setOnClickListener(checkAnswer);
         option3.setOnClickListener(checkAnswer);
-
-
-
-		//		private void calculateScore() {
-		//			if (cursorCategory != null && cursorCategory.moveToFirst()) {
-		//				int currentScore = cursorCategory.getInt(cursorCategory.getColumnIndex(DBHelper.KEY_SCORE));
-		//				final int idForScore = cursorCategory.getInt(cursorCategory.getColumnIndex(DBHelper.KEY_ID));
-		//				switch (difficulty) {
-		//				case 1:
-		//					currentScore += 100;
-		//					Log.d(" 1 New Score", currentScore + " 1 current Score" + " " + idForScore);
-		//					mDbHelper.updateScoreInDB(currentScore, idForScore);
-		//					break;
-		//
-		//				case 2:
-		//					currentScore += 200;
-		//					Log.d("2 New Score", currentScore + " 2 current Score");
-		//					mDbHelper.updateScoreInDB(currentScore, idForScore);
-		//					break;
-		//
-		//				case 3:
-		//					currentScore += 300;
-		//					Log.d("2 New Score", currentScore + " 3 current Score");
-		//					mDbHelper.updateScoreInDB(currentScore, idForScore);
-		//				default:
-		//
-		//					break;
-		//				}
-		//			}
-		//		}
-		//	});
 
 //		Button playButton = (Button) layout.findViewById(R.id.play_button);
 //		playButton.setOnClickListener(new View.OnClickListener() {

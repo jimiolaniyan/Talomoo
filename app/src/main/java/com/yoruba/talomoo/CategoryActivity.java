@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.avast.android.dialogs.fragment.ListDialogFragment;
 import com.avast.android.dialogs.iface.IListDialogListener;
+import com.yoruba.talomoo.util.Constant;
 import com.yoruba.talomoo.util.LanguageUtil;
 import com.yoruba.talomoo.util.QuestionUtil;
 
@@ -36,7 +37,6 @@ import butterknife.OnItemClick;
 
 public class CategoryActivity extends FragmentActivity implements LoaderCallbacks<Cursor>, IListDialogListener {
     final String REFRESH = "Refresh";
-    private static final String QUESTION_COUNT = "question count";
     //    public static final String EXTRA_MESSAGE = "com.yoruba.talomoo.MESSAGE";
     SimpleCursorAdapter mSimpleCursorAdapter;
 
@@ -108,7 +108,7 @@ public class CategoryActivity extends FragmentActivity implements LoaderCallback
         ListDialogFragment.createBuilder(aContext, getSupportFragmentManager())
                 .setTitle("Select Question")
                 .setItems(R.array.number_of_questions)
-                .setRequestCode(9)
+                .setRequestCode(position + 1)
                 .setChoiceMode(AbsListView.CHOICE_MODE_SINGLE)
                 .show();
     }
@@ -122,9 +122,6 @@ public class CategoryActivity extends FragmentActivity implements LoaderCallback
     }
 
     private void fillList() {
-//        String[] from = new String[]{DBHelper.KEY_IMAGES, DBHelper.KEY_NAME, DBHelper.KEY_COUNT, DBHelper.KEY_ID};
-//        int[] to = new int[]{R.id.image, R.id.list_question_type, R.id.list_questions_remaining};
-
         String[] from = new String[]{DBHelper.KEY_IMAGES, DBHelper.KEY_NAME, DBHelper.KEY_COUNT};
         int[] to = new int[]{R.id.image, R.id.list_question_type};
 
@@ -154,6 +151,14 @@ public class CategoryActivity extends FragmentActivity implements LoaderCallback
     }
 
     @Override
+    public void onListItemSelected(CharSequence value, int position, int requestCode) {
+        Intent i = new Intent(CategoryActivity.this, QuestionsActivity.class);
+        i.putExtra(DBHelper.KEY_ID, (long) requestCode);
+        i.putExtra(Constant.QUESTION_COUNT, new QuestionUtil().questionCount(position));
+        startActivity(i);
+    }
+
+    @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle bundle) {
         Uri uri = AppContentProvider.CONTENT_URI_CATEGORY;
         return new CursorLoader(this, uri, null, null, null, null);
@@ -172,22 +177,5 @@ public class CategoryActivity extends FragmentActivity implements LoaderCallback
 
     }
 
-    @Override
-    public void onListItemSelected(CharSequence value, int position, int requestCode) {
-        DBHelper mDbHelper = DBHelper.getInstance(CategoryActivity.this);
-        mDbHelper.openDatabase();
 
-        Cursor cursor = mDbHelper.fetchCategoryName(position + 1);
-        if (cursor != null && cursor.moveToFirst()) {
-            String category = cursor.getString(cursor.getColumnIndex("name"));
-            long id = cursor.getLong(cursor.getColumnIndex(DBHelper.KEY_ID));
-            cursor.close();
-            mDbHelper.close();
-            Intent i = new Intent(CategoryActivity.this, QuestionsActivity.class);
-            i.putExtra(DBHelper.KEY_ID, id);
-            i.putExtra(QUESTION_COUNT, new QuestionUtil().questionCount(position));
-            i.putExtra(DBHelper.KEY_CATEGORY, category);
-            startActivity(i);
-        }
-    }
 }

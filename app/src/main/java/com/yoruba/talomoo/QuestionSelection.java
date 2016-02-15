@@ -5,13 +5,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -132,7 +130,6 @@ public class QuestionSelection extends AppCompatActivity implements LoaderCallba
                     i.putExtra(DBHelper.KEY_ID, id);
                     i.putExtra(DBHelper.KEY_QUESTION_LEVEL, position);
                     i.putExtra(DBHelper.KEY_HINT, t);
-                    i.putExtra(DBHelper.KEY_COUNT, rowId);
                     i.putExtra(DBHelper.TAG, title);
                     startActivity(i);
                 }
@@ -156,10 +153,12 @@ public class QuestionSelection extends AppCompatActivity implements LoaderCallba
     public void onLoadFinished(Loader<Cursor> arg0, Cursor cursor) {
         mAdapter.swapCursor(cursor);
     }
+
     @Override
     public void onLoaderReset(Loader<Cursor> arg0) {
         mAdapter.swapCursor(null);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 // Inflate the menu; this adds items to the action bar if it is present.
