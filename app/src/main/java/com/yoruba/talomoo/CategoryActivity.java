@@ -1,6 +1,9 @@
 package com.yoruba.talomoo;
 
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -8,6 +11,8 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -27,6 +32,11 @@ import com.yoruba.talomoo.util.Constant;
 import com.yoruba.talomoo.util.LanguageUtil;
 import com.yoruba.talomoo.util.QuestionUtil;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.Bind;
@@ -150,6 +160,7 @@ public class CategoryActivity extends FragmentActivity implements LoaderCallback
         });
     }
 
+
     @Override
     public void onListItemSelected(CharSequence value, int position, int requestCode) {
         Intent i = new Intent(CategoryActivity.this, QuestionsActivity.class);
@@ -177,5 +188,32 @@ public class CategoryActivity extends FragmentActivity implements LoaderCallback
 
     }
 
+    public static class LisDialogFragment extends DialogFragment {
+        List<String> dates = new ArrayList<>();
 
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            final AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+            Calendar c = Calendar.getInstance();
+
+            for (int i = 0; i < 7; i++){
+                if (c.get(Calendar.MINUTE) >= 1)
+                    c.add(Calendar.HOUR, i+1);
+
+                c.set(Calendar.MINUTE, 0);
+                c.set(Calendar.SECOND, 0);
+                dates.add(c.getTime().toString());
+            }
+
+            CharSequence[] cs = dates.toArray(new CharSequence[dates.size()]);
+            dialog.setSingleChoiceItems(cs, 0, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            return dialog.create();
+        }
+    }
 }

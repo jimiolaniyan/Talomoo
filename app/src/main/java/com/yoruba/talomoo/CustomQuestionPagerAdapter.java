@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -77,7 +78,8 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 
 		final int id = cursor.getInt(cursor.getColumnIndex(DBHelper.KEY_ID));
 		final String s_id = Integer.toString(id);
-		final Button next = (Button) layout.findViewById(R.id.next_button);
+		final ImageView next = (ImageView) layout.findViewById(R.id.arrow_right);
+		final ImageView previous = (ImageView) layout.findViewById(R.id.arrow_left);
 		final TextView choose_text = (TextView) layout.findViewById(R.id.choose_answer);
 		final ScrollView scroll = (ScrollView) layout.findViewById(R.id.page_content);
 
@@ -120,15 +122,15 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 
 		final Button option1; 
 		option1 = (Button) layout.findViewById(R.id.button_option1); 
-		option1.setText((CharSequence) optionsArray.get(0));
+		option1.setText(optionsArray.get(0));
 
 		final Button option2;
 		option2 = (Button) layout.findViewById(R.id.button_option2);
-		option2.setText((CharSequence) optionsArray.get(1));
+		option2.setText(optionsArray.get(1));
 
 		final Button option3;
 		option3 = (Button) layout.findViewById(R.id.button_option3);
-		option3.setText((CharSequence) optionsArray.get(2));
+		option3.setText(optionsArray.get(2));
 
 		// Appending tags to the options
 
@@ -152,7 +154,6 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 
 		// Setting up sharedpreferences for buttons according status
 
-
 		final boolean isClicked = setted.getBoolean(s_id, false);
 		if (isClicked) {
 			option1.setEnabled(false);
@@ -165,11 +166,11 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 			if(right){
 				choose_text.setText(R.string.correct);
 				choose_text.setTextColor(0xff2ad094);
-				if (optionsArray.get(0).toString().equals(rightAnswer)) {
+				if (optionsArray.get(0).equals(rightAnswer)) {
 					option1.setBackgroundColor(0xff9dcf94);
-				}else if (optionsArray.get(1).toString().equals(rightAnswer)) {
+				}else if (optionsArray.get(1).equals(rightAnswer)) {
 					option2.setBackgroundColor(0xff9dcf94);
-				}else if (optionsArray.get(2).toString().equals(rightAnswer)) {
+				}else if (optionsArray.get(2).equals(rightAnswer)) {
 					option3.setBackgroundColor(0xff9dcf94);
 				}
 			}
@@ -181,19 +182,19 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 				final String button1 = setted.getString(s_id + " Button1Text", null);
 
 				if (button1 != null) {
-					if (optionsArray.get(0).toString().equals(button1)) {
+					if (optionsArray.get(0).equals(button1)) {
 						option1.setBackgroundColor(0xffec6d42);
-					}else if (optionsArray.get(1).toString().equals(button1)) {
+					}else if (optionsArray.get(1).equals(button1)) {
 						option2.setBackgroundColor(0xffec6d42);
-					}else if (optionsArray.get(2).toString().equals(button1)) {
+					}else if (optionsArray.get(2).equals(button1)) {
 						option3.setBackgroundColor(0xffec6d42);
 					}
 
-					if (optionsArray.get(0).toString().equals(rightAnswer)) {
+					if (optionsArray.get(0).equals(rightAnswer)) {
 						option1.setBackgroundColor(0xff9dcf94);
-					}else if (optionsArray.get(1).toString().equals(rightAnswer)) {
+					}else if (optionsArray.get(1).equals(rightAnswer)) {
 						option2.setBackgroundColor(0xff9dcf94);
-					}else if (optionsArray.get(2).toString().equals(rightAnswer)) {
+					}else if (optionsArray.get(2).equals(rightAnswer)) {
 						option3.setBackgroundColor(0xff9dcf94);
 					}
 				}
@@ -314,36 +315,6 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
         option2.setOnClickListener(checkAnswer);
         option3.setOnClickListener(checkAnswer);
 
-//		Button playButton = (Button) layout.findViewById(R.id.play_button);
-//		playButton.setOnClickListener(new View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View arg0) {
-//				if (cursor.moveToPosition(pager.getCurrentItem())) {
-//					String audio = cursor.getString(cursor.getColumnIndex(DBHelper.KEY_HINT));
-//					if (audio == null || audio.isEmpty()) {
-//						Toast.makeText(context, "Nothing to Play " + audio, Toast.LENGTH_SHORT).show();
-//					}else if (audio != null && !audio.isEmpty()) {
-//						try {
-//							AssetFileDescriptor afd = context.getAssets().openFd(audio);
-//							MediaPlayer player = new MediaPlayer();
-//							player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-//							player.prepare();
-//							player.start();
-//						} catch (IOException e) {
-//							Log.d(" Audio Error ", e.getMessage());
-//							e.printStackTrace();
-//						}
-//						//						MediaPlayer mPlayer = MediaPlayer.create(context, context.getAssets().open(audio));
-//						//						/*(context,getResources().getIdentifier(audio, "raw", context.getPackageName()));*/
-//						//						mPlayer.start();
-//					}
-//
-//				}
-//
-//			}
-//		});
-
 		Button postButton = (Button) layout.findViewById(R.id.post_online);
 		postButton.setOnClickListener(new OnClickListener() {
 
@@ -362,6 +333,24 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
             public int getItem(int i) {
                 return i += pager.getCurrentItem();
             }
+		});
+
+		previous.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				int j = pager.getCurrentItem() - 1;
+				if (position != cursor.getCount()-1) {
+					Toast.makeText(context, context.getResources().getString
+							(R.string.question_no) + " " + j + " id " + id, Toast.LENGTH_SHORT).show();
+
+				}else {
+					Toast.makeText(context, "This is the end of this category." +
+							" Check for other unanswered questions", Toast.LENGTH_LONG).show();
+
+				}
+
+				pager.setCurrentItem(j, true);
+			}
 		});
 
 		next.setOnClickListener(new View.OnClickListener() {
@@ -386,6 +375,7 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 				return i += pager.getCurrentItem();
 			}
 		});
+
 
 		((ViewPager)view).addView(layout);
 		return layout;

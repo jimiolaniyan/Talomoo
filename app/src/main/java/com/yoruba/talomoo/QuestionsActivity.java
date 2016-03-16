@@ -43,6 +43,7 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
 		count = ext.getInt(Constant.QUESTION_COUNT);
 
         mAdapter = new CustomQuestionPagerAdapter(this, null, null);
+
 		pager = (ViewPager) findViewById(R.id.pager_nav);
 		pager.setAdapter(mAdapter);
 
@@ -141,7 +142,7 @@ public class QuestionsActivity extends AppCompatActivity implements LoaderCallba
 
     @Override
     public void onPositiveButtonClicked(int requestCode) {
-        Intent intent = new Intent(QuestionsActivity.this, MainActivity.class);
+        Intent intent = new Intent(QuestionsActivity.this, CategoryActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

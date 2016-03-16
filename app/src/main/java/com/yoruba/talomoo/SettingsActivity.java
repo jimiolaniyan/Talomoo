@@ -28,32 +28,6 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferences);
         bindPreferenceSummaryToValue(findPreference(getString(R.string.language_preference)));
-        userSettings();
-	}
-
-    private void userSettings() {
-		
-		Preference pref = findPreference("login");
-		PreferenceCategory prefCategory = (PreferenceCategory) findPreference("log_in");
-		ParseUser currentUser = ParseUser.getCurrentUser();
-		if (currentUser == null || !currentUser.isAuthenticated()) {
-			prefCategory.removePreference(pref);
-		}else {
-				pref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-					@Override
-					public boolean onPreferenceClick(Preference preference) {
-						Preference pref = findPreference("login");
-						PreferenceCategory prefCategory = (PreferenceCategory) findPreference("log_in");
-						ParseUser.logOut();
-						prefCategory.removePreference(pref);
-						Intent i = new Intent(SettingsActivity.this, SignUpAndLogin.class);
-						startActivity(i);
-						finish();
-						return false;
-					}
-				});
-			}
-			
 	}
 
     private void bindPreferenceSummaryToValue(Preference preference){

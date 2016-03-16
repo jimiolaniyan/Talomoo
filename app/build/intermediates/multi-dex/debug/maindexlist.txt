@@ -197,6 +197,7 @@ android/support/v4/view/ViewCompat.class
 android/support/v4/view/ViewCompatMarshmallow.class
 android/support/v4/view/WindowInsetsCompat.class
 android/support/v4/media/VolumeProviderCompatApi21.class
+com/yoruba/talomoo/CategoryActivity$LisDialogFragment.class
 com/yoruba/talomoo/SignUpAndLogin$3.class
 android/support/v4/util/ArrayMap.class
 android/support/annotation/ColorInt.class
@@ -287,7 +288,6 @@ android/support/v4/media/MediaBrowserCompat$MediaItem.class
 android/support/v4/widget/SimpleCursorAdapter$ViewBinder.class
 android/support/v4/app/Fragment$SavedState.class
 android/support/v4/media/session/MediaSessionCompat$1.class
-com/yoruba/talomoo/SettingsActivity$1.class
 com/easy/facebook/android/facebook/Facebook.class
 android/support/v4/media/session/PlaybackStateCompat$1.class
 android/support/v4/view/accessibility/AccessibilityNodeInfoCompat.class
