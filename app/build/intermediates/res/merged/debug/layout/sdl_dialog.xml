@@ -79,4 +79,4 @@
     <View
         android:id="@+id/sdl_buttons_bottom_space"
         style="@style/SDL.Space.ButtonsBottom" />
-</LinearLayout><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_dialog.xml --><!-- From: file:/C:/Users/ARIAROO/Jimi/Talomoo/app/build/intermediates/exploded-aar/com.avast/android-styled-dialogs/2.2.0/res/layout/sdl_dialog.xml -->
+</LinearLayout><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_dialog.xml -->

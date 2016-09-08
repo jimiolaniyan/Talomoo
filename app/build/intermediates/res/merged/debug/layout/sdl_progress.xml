@@ -13,4 +13,4 @@
         style="@style/SDL.TextView.Message.Progress"
         tools:text="Message ..." />
 
-</LinearLayout><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_progress.xml --><!-- From: file:/C:/Users/ARIAROO/Jimi/Talomoo/app/build/intermediates/exploded-aar/com.avast/android-styled-dialogs/2.2.0/res/layout/sdl_progress.xml -->
+</LinearLayout><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_progress.xml -->

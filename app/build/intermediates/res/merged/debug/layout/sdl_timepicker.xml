@@ -2,4 +2,4 @@
 
 <TimePicker xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/sdl_datepicker"
-    style="@style/SDL.DatePicker" /><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_timepicker.xml --><!-- From: file:/C:/Users/ARIAROO/Jimi/Talomoo/app/build/intermediates/exploded-aar/com.avast/android-styled-dialogs/2.2.0/res/layout/sdl_timepicker.xml -->
+    style="@style/SDL.DatePicker" /><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_timepicker.xml -->

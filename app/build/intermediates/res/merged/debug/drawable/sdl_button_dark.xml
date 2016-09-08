@@ -2,4 +2,4 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" android:exitFadeDuration="@android:integer/config_shortAnimTime" tools:ignore="UnusedAttribute">
     <item android:drawable="@drawable/sdl_button_pressed_dark" android:state_pressed="true" />
     <item android:drawable="@drawable/sdl_button_normal" />
-</selector><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/drawable/sdl_button_dark.xml --><!-- From: file:/C:/Users/ARIAROO/Jimi/Talomoo/app/build/intermediates/exploded-aar/com.avast/android-styled-dialogs/2.2.0/res/drawable/sdl_button_dark.xml -->
+</selector><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/drawable/sdl_button_dark.xml -->

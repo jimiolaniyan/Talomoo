@@ -12,4 +12,4 @@
         style="@style/SDL.TextView.MultiChoice"
         tools:text="Item" />
 
-</com.avast.android.dialogs.util.CheckableLinearLayout><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_list_item_multichoice.xml --><!-- From: file:/C:/Users/ARIAROO/Jimi/Talomoo/app/build/intermediates/exploded-aar/com.avast/android-styled-dialogs/2.2.0/res/layout/sdl_list_item_multichoice.xml -->
+</com.avast.android.dialogs.util.CheckableLinearLayout><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_list_item_multichoice.xml -->

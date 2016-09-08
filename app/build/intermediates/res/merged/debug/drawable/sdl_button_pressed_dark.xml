@@ -3,4 +3,4 @@
     android:shape="rectangle">
     <corners android:radius="2dp" />
     <solid android:color="@color/sdl_pressed_dark" />
-</shape><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/drawable/sdl_button_pressed_dark.xml --><!-- From: file:/C:/Users/ARIAROO/Jimi/Talomoo/app/build/intermediates/exploded-aar/com.avast/android-styled-dialogs/2.2.0/res/drawable/sdl_button_pressed_dark.xml -->
+</shape><!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/drawable/sdl_button_pressed_dark.xml -->

@@ -3,4 +3,4 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/sdl_text"
     style="@style/SDL.TextView.ListItem" />
-<!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_list_item.xml --><!-- From: file:/C:/Users/ARIAROO/Jimi/Talomoo/app/build/intermediates/exploded-aar/com.avast/android-styled-dialogs/2.2.0/res/layout/sdl_list_item.xml -->
+<!-- From: file:/Users/vavra/dev/android-styled-dialogs/library/src/main/res/layout/sdl_list_item.xml -->
