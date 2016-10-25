@@ -324,13 +324,12 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 				Intent intent = new Intent(context, Login.class);
 				intent.putExtra(DBHelper.KEY_QUESTION_TEXT, text);
                 int j = getItem(+1) + 1;
-                Toast.makeText(context, " id" + j , Toast.LENGTH_LONG).show();
                 intent.putExtra(DBHelper.KEY_ID, j);
 				context.startActivity(intent);
 
 
 			}
-            public int getItem(int i) {
+            private int getItem(int i) {
                 return i += pager.getCurrentItem();
             }
 		});
@@ -339,11 +338,7 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 			@Override
 			public void onClick(View view) {
 				int j = pager.getCurrentItem() - 1;
-				if (position != cursor.getCount()-1) {
-					Toast.makeText(context, context.getResources().getString
-							(R.string.question_no) + " " + j + " id " + id, Toast.LENGTH_SHORT).show();
-
-				}else {
+				if (position == cursor.getCount()-1){
 					Toast.makeText(context, "This is the end of this category." +
 							" Check for other unanswered questions", Toast.LENGTH_LONG).show();
 
@@ -358,11 +353,7 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 			@Override
 			public void onClick(View arg0) {
 				int j = getItem(+1) + 1;
-				if (position != cursor.getCount()-1) {
-					Toast.makeText(context, context.getResources().getString
-                            (R.string.question_no) + " " + j + " id " + id, Toast.LENGTH_SHORT).show();
-
-                }else {
+				if (position == cursor.getCount()-1) {
 					Toast.makeText(context, "This is the end of this category." +
                             " Check for other unanswered questions", Toast.LENGTH_LONG).show();
 
@@ -371,7 +362,7 @@ public class CustomQuestionPagerAdapter extends PagerAdapter {
 				pager.setCurrentItem(getItem(+1), true);
 			}
 
-			public int getItem(int i) {
+			private int getItem(int i) {
 				return i += pager.getCurrentItem();
 			}
 		});

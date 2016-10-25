@@ -51,7 +51,7 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
                     CharSequence sequence = listPreference.getEntries()[prefIndex + 1];
                     preference.setSummary("To " + sequence);
 //                    changeConfig("en");
-                    Toast.makeText(this, Pref + " " + prefIndex, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, Pref, Toast.LENGTH_SHORT).show();
 //                    Intent intent = getIntent();
 //                    finish();
 //                    startActivity(intent);
@@ -59,8 +59,6 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
                 }else if(prefIndex == 1){
                     CharSequence sequence = listPreference.getEntries()[prefIndex - 1];
                     preference.setSummary("To " + sequence);
-//                    changeConfig("es");
-                    Toast.makeText(this, Pref + " " + prefIndex, Toast.LENGTH_SHORT).show();
                 }
 
             }
